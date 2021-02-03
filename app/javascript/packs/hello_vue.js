@@ -9,7 +9,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import store from '../store';
 import Vuetify from "vuetify"; // 追加
-import "vuetify/dist/vuetify.min.css"; // 追加
+import ("vuetify/dist/vuetify.min.css"); // 追加
 import router from '../router'
 import App from '../app.vue'
 
