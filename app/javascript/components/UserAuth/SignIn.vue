@@ -68,7 +68,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .topborder {
     border-top: 5px solid #b3e5fc !important;
   }
