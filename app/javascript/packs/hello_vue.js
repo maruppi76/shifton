@@ -13,6 +13,9 @@ import ("vuetify/dist/vuetify.min.css"); // 追加
 import router from '../router'
 import App from '../app.vue'
 
+import TurbolinksAdapter from 'vue-turbolinks';
+Vue.use(TurbolinksAdapter);
+
 Vue.use(Vuex)
 
 
