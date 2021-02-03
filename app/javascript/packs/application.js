@@ -7,9 +7,8 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
-import ('@mdi/font/css/materialdesignicons.css')
-import ('core-js/stable');
-import ("regenerator-runtime/runtime");
+import 'core-js/stable';
+import "regenerator-runtime/runtime";
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
