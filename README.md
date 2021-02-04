@@ -1,6 +1,14 @@
 <p align="center">
   <img src="app/assets/images/logos/shifton_logo_maincolor.png" width="400">
-</p>  
+</p>
+<br>
+<p align="center">
+  <img src="https://img.shields.io/badge/Rails-6.0.3.4-red.svg">
+  <img src="https://img.shields.io/badge/Ruby-2.6.5-orange.svg">
+  <img src="https://img.shields.io/badge/devise-4.7.3-orange.svg">
+</p>
+
+<br>
 Shifton(シフトン)は、誰でも簡単に操作ができるシフト管理アプリケーションです。 
 
 SPAで使い易く、どのような業種にも対応できるよう細かな部分まで設定ができる点がポイントです。
