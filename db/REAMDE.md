@@ -64,8 +64,6 @@ User
 - belongs_to :department_main, class_name: "Department"
 - belongs_to :department_sub, class_name: "Department"
 - has_many :shifts
-- has_many :shift_requests
-- has_many :regal_holiday_requests
 
 
 ## patterns table
@@ -88,8 +86,6 @@ Pattern
 
 ### Association
 - has_many :shifts
-- has_many :shift_requests
-- has_many :regal_holiday_requests
 
 
 ## types table
@@ -127,42 +123,3 @@ Shift
 - belongs_to :user
 - belongs_to :pattern
 - belongs_to :type
-
-
-## shift_requests table
-シフト希望を管理するテーブル
-
-### Model
-ShiftRequest
-
-### Column Information
-| Column      | Type       | Options                        |
-| :---------: | :--------: | :----------------------------: |
-| id(PK)      |            |                                |
-| date        | date       | null: false                    |
-| user(FK)    | references | null: false, foreign_key: true |
-| pattern(FK) | references | null: false, foreign_key: true |
-| status      | integer    | null: false, default: 0        |
-
-### Association
-- belongs_to :user
-- belongs_to :pattern
-
-## regal_holiday_requests table
-有給休暇などの法定休暇希望を管理するテーブル
-
-## Model
-RegalHolidayRequest
-
-### Column Information
-| Column      | Type       | Options                        |
-| :---------: | :--------: | :----------------------------: |
-| id(PK)      |            |                                |
-| date        | date       | null: false                    |
-| user(FK)    | references | null: false, foreign_key: true |
-| pattern(FK) | references | null: false, foreign_key: true |
-| status      | integer    | null: false, default: 0        |
-
-### Association
-- belongs_to :user
-- belongs_to :pattern
