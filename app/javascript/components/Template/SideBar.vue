@@ -117,11 +117,6 @@
               }
             ]
           },
-          {
-            name: 'シフト希望申請',
-            icon: 'mdi-file-upload-outline',
-            link: '/shift_preferred'
-          },
         ],
         management_lists: [
           {
@@ -136,22 +131,12 @@
             icon: 'mdi-account-multiple',
             link: '/staff_management',
           },
-          {
-            name: '設定',
-            icon: 'mdi-cog-outline',
-            link: '/hoge',
-          },
         ],
         setting_lists: [
           {
             name: 'アカウント情報',
             icon: 'mdi-account',
             link: '/'
-          },
-          {
-            name: 'アカウント設定',
-            icon: 'mdi-account-cog',
-            link: '/hoge'
           },
         ],
       }

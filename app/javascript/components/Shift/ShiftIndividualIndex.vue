@@ -7,29 +7,7 @@
     </v-card>
     <v-container class="my-10">
       <v-card elevation="2" class="rounded-0 pa-10">
-        <v-sheet
-          color='grey lighten-3'
-          class="mb-5 pa-5"
-        >
-          <v-radio-group
-            v-model="checkRadio"
-            column
-          >
-            <v-radio
-              class="SearchSelect"
-              label="指定月"
-              color="info"
-              value="1"
-            ></v-radio>
-            <v-radio
-              class="SearchSelect"
-              label="指定期間"
-              color="info"
-              value="2"
-            ></v-radio>
-          </v-radio-group>
-          
-        </v-sheet>
+        
         <v-simple-table
           class="MyShiftTable"
         >

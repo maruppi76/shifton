@@ -8,7 +8,6 @@ import AccountIndex from './components/Account/AccountIndex'
 import ShiftIndividualIndex from './components/Shift/ShiftIndividualIndex'
 import ShiftDepartmentIndex from './components/Shift/ShiftDepartmentIndex'
 import ShiftIndex from './components/Shift/ShiftIndex'
-import Preferred from './components/ShiftPreferred/PreferredIndex'
 import StaffManagement from './components/Staff/StaffManagement'
 import CreateShift from './components/Shift/CreateShift'
 
@@ -41,10 +40,6 @@ const router = new Router({
         {
           path: '/shifts',
           component: ShiftIndex
-        },
-        {
-          path: '/shift_preferred',
-          component: Preferred
         },
         {
           path: '/staff_management',
