@@ -10,9 +10,9 @@ FactoryBot.define do
     status             { 1 }
     role               { 1 }
     admin              { true }
-    department_main_id { 1 }
-    department_sub_id  { 1 }
 
     association :company
+    association :department_main, factory: :department
+    association :department_sub, factory: :department
   end
 end
