@@ -1,4 +1,4 @@
 id,first_name,last_name,first_name_kana,last_name_kana,email,password,staff_code,company_id,department_main_id,department_sub_id,status,role,admin
-1,テスト,太郎,テスト,タロウ,test@test.com,password,10175,1,25,,在籍中,全権管理者,TRUE
-2,テスト,次郎,テスト,ジロウ,test2@test.com,password,10176,1,25,,休職中,シフト管理者,FALSE
-3,テスト,三郎,テスト,サブロウ,test3@test.com,password,10177,1,24,,退職,スタッフ,FALSE
+1,山田,太郎,ヤマダ,タロウ,test@test.com,password,11111,1,12,,在籍中,全権管理者,TRUE
+2,佐藤,花子,サトウ,ハナコ,test2@test.com,password,22222,1,16,,在籍中,シフト管理者,FALSE
+3,鈴木,一郎,スズキ,イチロウ,test3@test.com,password,33333,1,16,,在籍中,スタッフ,FALSE

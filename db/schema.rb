@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_052110) do
+ActiveRecord::Schema.define(version: 2021_01_31_051509) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -37,28 +37,6 @@ ActiveRecord::Schema.define(version: 2021_01_31_052110) do
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "regal_holiday_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "date", null: false
-    t.bigint "user_id", null: false
-    t.bigint "pattern_id", null: false
-    t.integer "status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["pattern_id"], name: "index_regal_holiday_requests_on_pattern_id"
-    t.index ["user_id"], name: "index_regal_holiday_requests_on_user_id"
-  end
-
-  create_table "shift_requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "date", null: false
-    t.bigint "user_id", null: false
-    t.bigint "pattern_id", null: false
-    t.integer "status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["pattern_id"], name: "index_shift_requests_on_pattern_id"
-    t.index ["user_id"], name: "index_shift_requests_on_user_id"
   end
 
   create_table "shifts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
