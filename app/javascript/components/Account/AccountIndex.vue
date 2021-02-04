@@ -68,7 +68,7 @@
   }
 </script>
 
-<style scoped>
+<style>
 table {
   border-spacing: 0;
   border-collapse: collapse;

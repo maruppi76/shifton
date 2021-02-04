@@ -69,7 +69,7 @@
   }
 </script>
 
-<style scoped>
+<style>
   .DepShiftTable {
     border-radius: 0;
     border-top: thin solid #E0E0E0;
