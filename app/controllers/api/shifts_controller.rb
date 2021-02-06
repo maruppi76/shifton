@@ -1,5 +1,22 @@
 class Api::ShiftsController < ApplicationController
 
+  def create
+    @shift = Shift.new(shift_params)
+    if @shift.save
+      unless !@shift.errors.messages.empty?
+        render :json => {
+          'status' => 'ok',
+          'csrf_token' => form_authenticity_token,
+        } and return
+      end
+    else
+      render :json => {
+        'status' => 401,
+        'errors'=> @shift.errors
+      } and return
+    end
+  end
+
   def update
     @shift = Shift.find(params[:id])
     if @shift.update(shift_params)

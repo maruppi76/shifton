@@ -280,7 +280,21 @@
 
         
         if(this.editedIndex == -1){
-          console.log('新規投稿です')
+          axios.post(`/api/shifts`, {
+            shift: this.submitShift
+          })
+          .then(response =>{
+            if(response.data.status == 'ok'){
+              axios.get('/api/shifts/all_shifts.json')
+                .then(response => {
+                  this.shifts = response.data
+                })
+              this.close()
+            } else {
+              this.text = "入力内容に誤りがあります。"
+              this.snackbar = true
+            }
+          })
         } else {
           axios.patch(`/api/shifts/${this.createShift.id}`, {
             shift: this.submitShift
