@@ -153,13 +153,38 @@
   export default {
     data(){
       return {
+        day : new Date().toISOString().substr(0, 7),
         checkRadio: '1',
         dates: [],
         shifts: [],
         current_user: '',
+        menu: false,
       }
     },
     mounted(){
+      let date = moment(this.day);
+      let num = moment(date).daysInMonth()
+      let dates = []
+      
+      for(let i = 1; i < num + 1; i++){
+        let result = moment(date).date(i)
+        let text = result.format('MM/DD(ddd)')
+        let textleft = result.format('MM/DD(')
+        let textmiddle = result.format('ddd')
+        let textright = result.format(')')
+        let value = result.format('YYYY-MM-DD')
+        let hash = ''
+
+        if(textmiddle == '土'){
+          hash = {left: textleft, middle: textmiddle, right: textright, value: value, tc: 'blue--text'}
+        } else if(textmiddle == '日'){
+          hash = {left: textleft, middle: textmiddle, right: textright, value: value, tc: 'red--text'}
+        } else {
+          hash = {text: text, value: value}
+        }
+        dates.push(hash)
+      }
+      this.dates = dates
       axios.get('/api/shifts/my_shift.json')
         .then(response => {
           this.shifts = response.data
