@@ -157,7 +157,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">キャンセル</v-btn>
-              <v-btn color="blue darken-1" text @click="deleteItemConfirm">削除</v-btn>
+              <v-btn color="blue darken-1" text @click="deleteShitConfirm">削除</v-btn>
               <v-spacer></v-spacer>
             </v-card-actions>
           </v-card>
@@ -298,6 +298,24 @@
             }
           })
         }
+      },
+      deleteShitConfirm(e){
+        e.preventDefault();
+        this.setAxiosDefaults();
+        axios.delete(`/api/shifts/${this.createShift.id}`)
+        .then(response =>{
+          if(response.data.status == 'ok'){
+            axios.get('/api/shifts/all_shifts.json')
+              .then(response => {
+                this.shifts = response.data
+              })
+            this.close()
+            this.closeDelete()
+          } else {
+            this.text = "入力内容に誤りがあります。"
+            this.snackbar = true
+          }
+        })
       }
     },
     mixins:[
