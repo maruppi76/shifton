@@ -26,13 +26,12 @@ class Api::ShiftsController < ApplicationController
           'csrf_token' => form_authenticity_token,
         } and return
       end
+    else
         render :json => {
           'status' => 401,
           'errors'=> @shift.errors
         } and return
-      end
-    else
-
+    end
   end
 
   def all_shifts
