@@ -17,6 +17,24 @@ class Api::ShiftsController < ApplicationController
     end
   end
 
+  def destroy
+    @shift = Shift.find(params[:id])
+    if @shift.destroy
+      unless !@shift.errors.messages.empty?
+        render :json => {
+          'status' => 'ok',
+          'csrf_token' => form_authenticity_token,
+        } and return
+      end
+        render :json => {
+          'status' => 401,
+          'errors'=> @shift.errors
+        } and return
+      end
+    else
+
+  end
+
   def all_shifts
     @shifts = Shift.includes([:pattern, :type])
     render json: @shifts, each_serializer: ShiftSerializer

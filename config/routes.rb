@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         get "dep_users"
       end
     end
-    resources :shifts, only:[:create, :update] do
+    resources :shifts, only:[:create, :update, :destroy] do
       collection do
         get "all_shifts"
         get "my_shift"
