@@ -128,6 +128,8 @@
               text
               @click="shift_delete"
             >
+              削除
+            </v-btn>
             <v-spacer></v-spacer>
             <v-btn
               color="blue darken-1"
