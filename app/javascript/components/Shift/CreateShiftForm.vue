@@ -124,7 +124,7 @@
           </v-card-text>
           <v-card-actions>
             <v-btn
-              color="blue darken-1"
+              color="red"
               text
               @click="shift_delete"
             >
