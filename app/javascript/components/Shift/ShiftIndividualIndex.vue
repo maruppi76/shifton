@@ -11,7 +11,7 @@
           <v-spacer></v-spacer>
           <v-col
             cols="11"
-            sm="5"
+            sm="2"
           >
             <v-menu
               ref="menu"
@@ -29,8 +29,10 @@
                   label="表示月"
                   prepend-icon="mdi-calendar"
                   readonly
+                  outlined
                   v-bind="attrs"
                   v-on="on"
+                  dense
                 ></v-text-field>
               </template>
               <v-date-picker
@@ -65,6 +67,11 @@
         >
           <template v-slot:default>
             <thead class="MyShiftTableHeader">
+              <tr class="BS">
+                <th class="text-center white text-body-1" colspan="6">
+                  {{ formatDate(day) }}
+                </th>
+              </tr>
               <tr>
                 <th class="text-center" width="10%">
                   日付
@@ -229,6 +236,12 @@
       }
     },
     methods: {
+      formatDate (date) {
+        if (!date) return null
+
+        const [year, month] = date.split('-')
+        return `${year}年${month}月`
+      },
       filterShiftName(key) {
         let filterd = [];
         this.shifts.forEach(shift => {
@@ -295,6 +308,11 @@
   .MyShiftTableHeader > tr > th:last-child,
   .MyShiftTableMain > tr > td:last-child {
     border-right: none;
+  }
+
+  .BS {
+    border-left: thin solid #E0E0E0;
+    border-right: thin solid #E0E0E0;
   }
 
   .SearchSelect > label {
