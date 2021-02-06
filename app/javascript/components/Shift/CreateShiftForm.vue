@@ -123,6 +123,14 @@
             </v-container>
           </v-card-text>
           <v-card-actions>
+            <v-btn
+              v-if="editedIndex != -1"
+              color="red"
+              text
+              @click="shift_delete"
+            >
+              削除
+            </v-btn>
             <v-spacer></v-spacer>
             <v-btn
               color="blue darken-1"
@@ -141,6 +149,19 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+      <v-dialog v-model="dialogDelete" max-width="500px">
+          <v-card>
+            <v-card-text class="text-center subtitle pt-5">
+              本当に削除しますか？
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="blue darken-1" text @click="closeDelete">キャンセル</v-btn>
+              <v-btn color="blue darken-1" text @click="deleteShitConfirm">削除</v-btn>
+              <v-spacer></v-spacer>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
     </template>
   </v-simple-table>
 </template>
@@ -153,6 +174,7 @@
     data(){
       return {
         dialog: false,
+        dialogDelete: false,
         editedIndex: -1,
         username: '',
         patterns: [],
@@ -222,12 +244,18 @@
         console.log(this.createShift)
         this.dialog = true
       },
+      shift_delete(){
+        this.dialogDelete = true
+      },
       close(){
         this.dialog = false
         this.$nextTick(() => {
           this.createShift = Object.assign({}, this.defaultShift)
           this.editedIndex = -1
         })
+      },
+      closeDelete(){
+        this.dialogDelete = false
       },
       save(e){
         e.preventDefault();
@@ -270,6 +298,24 @@
             }
           })
         }
+      },
+      deleteShitConfirm(e){
+        e.preventDefault();
+        this.setAxiosDefaults();
+        axios.delete(`/api/shifts/${this.createShift.id}`)
+        .then(response =>{
+          if(response.data.status == 'ok'){
+            axios.get('/api/shifts/all_shifts.json')
+              .then(response => {
+                this.shifts = response.data
+              })
+            this.close()
+            this.closeDelete()
+          } else {
+            this.text = "入力内容に誤りがあります。"
+            this.snackbar = true
+          }
+        })
       }
     },
     mixins:[
