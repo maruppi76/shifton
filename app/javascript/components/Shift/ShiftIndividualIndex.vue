@@ -7,7 +7,56 @@
     </v-card>
     <v-container class="my-10">
       <v-card elevation="2" class="rounded-0 pa-10">
-        
+        <v-row>
+          <v-col
+            cols="11"
+            sm="5"
+          >
+            <v-menu
+              ref="menu"
+              v-model="menu"
+              :close-on-content-click="false"
+              :return-value.sync="day"
+              transition="scale-transition"
+              offset-y
+              max-width="290px"
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="day"
+                  label="Picker in menu"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker
+                v-model="day"
+                type="month"
+                no-title
+                scrollable
+              >
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="menu = false"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.menu.save(day)"
+                >
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+        </v-row>
         <v-simple-table
           class="MyShiftTable"
         >
@@ -109,9 +158,6 @@
         shifts: [],
         current_user: '',
       }
-    },
-    computed: {
-      
     },
     mounted(){
       let date = moment();
