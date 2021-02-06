@@ -8,6 +8,7 @@
     <v-container class="my-10">
       <v-card elevation="2" class="rounded-0 pa-10">
         <v-row>
+          <v-spacer></v-spacer>
           <v-col
             cols="11"
             sm="5"
@@ -25,7 +26,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                   v-model="day"
-                  label="Picker in menu"
+                  label="表示月"
                   prepend-icon="mdi-calendar"
                   readonly
                   v-bind="attrs"
@@ -37,6 +38,7 @@
                 type="month"
                 no-title
                 scrollable
+                locale='ja'
               >
                 <v-spacer></v-spacer>
                 <v-btn
@@ -44,18 +46,19 @@
                   color="primary"
                   @click="menu = false"
                 >
-                  Cancel
+                  キャンセル
                 </v-btn>
                 <v-btn
                   text
                   color="primary"
                   @click="$refs.menu.save(day)"
                 >
-                  OK
+                  表示
                 </v-btn>
               </v-date-picker>
             </v-menu>
           </v-col>
+          <v-spacer></v-spacer>
         </v-row>
         <v-simple-table
           class="MyShiftTable"
