@@ -7,12 +7,71 @@
     </v-card>
     <v-container class="my-10">
       <v-card elevation="2" class="rounded-0 pa-10">
-        
+        <v-row>
+          <v-spacer></v-spacer>
+          <v-col
+            cols="11"
+            sm="2"
+          >
+            <v-menu
+              ref="menu"
+              v-model="menu"
+              :close-on-content-click="false"
+              :return-value.sync="day"
+              transition="scale-transition"
+              offset-y
+              max-width="290px"
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="day"
+                  label="表示月"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  outlined
+                  v-bind="attrs"
+                  v-on="on"
+                  dense
+                ></v-text-field>
+              </template>
+              <v-date-picker
+                v-model="day"
+                type="month"
+                no-title
+                scrollable
+                locale='ja'
+              >
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="menu = false"
+                >
+                  キャンセル
+                </v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.menu.save(day)"
+                >
+                  表示
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+          <v-spacer></v-spacer>
+        </v-row>
         <v-simple-table
           class="MyShiftTable"
         >
           <template v-slot:default>
             <thead class="MyShiftTableHeader">
+              <tr class="BS">
+                <th class="text-center white text-body-1" colspan="6">
+                  {{ formatDate(day) }}
+                </th>
+              </tr>
               <tr>
                 <th class="text-center" width="10%">
                   日付
@@ -104,17 +163,16 @@
   export default {
     data(){
       return {
+        day : new Date().toISOString().substr(0, 7),
         checkRadio: '1',
         dates: [],
         shifts: [],
         current_user: '',
+        menu: false,
       }
     },
-    computed: {
-      
-    },
     mounted(){
-      let date = moment();
+      let date = moment(this.day);
       let num = moment(date).daysInMonth()
       let dates = []
       
@@ -150,7 +208,40 @@
         })
         .catch(error => console.log(error))
     },
+    watch: {
+      menu: function() {
+        let date = moment(this.day);
+        let num = moment(date).daysInMonth()
+        let dates = []
+        
+        for(let i = 1; i < num + 1; i++){
+          let result = moment(date).date(i)
+          let text = result.format('MM/DD(ddd)')
+          let textleft = result.format('MM/DD(')
+          let textmiddle = result.format('ddd')
+          let textright = result.format(')')
+          let value = result.format('YYYY-MM-DD')
+          let hash = ''
+
+          if(textmiddle == '土'){
+            hash = {left: textleft, middle: textmiddle, right: textright, value: value, tc: 'blue--text'}
+          } else if(textmiddle == '日'){
+            hash = {left: textleft, middle: textmiddle, right: textright, value: value, tc: 'red--text'}
+          } else {
+            hash = {text: text, value: value}
+          }
+          dates.push(hash)
+        }
+        this.dates = dates
+      }
+    },
     methods: {
+      formatDate (date) {
+        if (!date) return null
+
+        const [year, month] = date.split('-')
+        return `${year}年${month}月`
+      },
       filterShiftName(key) {
         let filterd = [];
         this.shifts.forEach(shift => {
@@ -217,6 +308,11 @@
   .MyShiftTableHeader > tr > th:last-child,
   .MyShiftTableMain > tr > td:last-child {
     border-right: none;
+  }
+
+  .BS {
+    border-left: thin solid #E0E0E0;
+    border-right: thin solid #E0E0E0;
   }
 
   .SearchSelect > label {
