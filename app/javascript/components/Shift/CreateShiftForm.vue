@@ -123,6 +123,11 @@
             </v-container>
           </v-card-text>
           <v-card-actions>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click="shift_delete"
+            >
             <v-spacer></v-spacer>
             <v-btn
               color="blue darken-1"
@@ -221,6 +226,9 @@
         })
         console.log(this.createShift)
         this.dialog = true
+      },
+      shift_delete(){
+
       },
       close(){
         this.dialog = false
