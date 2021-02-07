@@ -41,7 +41,7 @@
                     v-model="editedUser.id"
                     label="id"
                     dense
-                    readonly
+                    disabled
                   ></v-text-field>
                 </v-col>
                 <v-col
