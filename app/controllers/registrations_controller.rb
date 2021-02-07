@@ -49,6 +49,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new_user_params
     params.require(:user).permit(:id,
+                                 :status,
                                  :first_name,
                                  :last_name,
                                  :first_name_kana,
