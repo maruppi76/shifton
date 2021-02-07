@@ -368,7 +368,7 @@
               password: this.editedUser.password,
               staff_code: this.editedUser.staff_code,
               company_id: this.editedUser.company_id,
-              department_main_id: this.editedUser.department_main,
+              department_main_id: this.editedUser.department_main.id,
               department_sub_id: this.editedUser.department_sub,
               role: this.editedUser.role,
               admin: this.editedUser.admin,
