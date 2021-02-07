@@ -38,6 +38,31 @@
                   md="6"
                 >
                   <v-text-field
+                    v-model="editedUser.id"
+                    label="id"
+                    dense
+                    disabled
+                  ></v-text-field>
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="6"
+                >
+                  <v-select
+                    dense
+                    :items="statuses"
+                    label="従業員ステータス"
+                    v-model="editedUser.status"
+                    
+                  ></v-select>
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="6"
+                >
+                  <v-text-field
                     v-model="editedUser.first_name"
                     label="名前（姓）"
                     dense
@@ -218,6 +243,7 @@
         search: '',
         departments: [],
         roles: ['全権管理者','シフト管理者','スタッフ'],
+        statuses: ['在籍中', '休職中', '退職'],
         headers: [
           { text: 'スタッフコード', value: 'staff_code' },
           { text: '状態', value: 'status' },
@@ -342,7 +368,7 @@
               password: this.editedUser.password,
               staff_code: this.editedUser.staff_code,
               company_id: this.editedUser.company_id,
-              department_main_id: this.editedUser.department_main,
+              department_main_id: this.editedUser.department_main.id,
               department_sub_id: this.editedUser.department_sub,
               role: this.editedUser.role,
               admin: this.editedUser.admin,

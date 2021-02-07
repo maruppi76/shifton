@@ -19,13 +19,10 @@ class User < ApplicationRecord
     validates :last_name_kana
   end
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX
 
   with_options presence: true do
     validates :role
     validates :status
-    validates :admin
   end
 
   # Association
