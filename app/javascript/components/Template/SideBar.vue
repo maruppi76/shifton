@@ -105,15 +105,15 @@
             lists: [
               {
                 name: '個人シフト',
-                link: '/myshifts',
+                link: '/shifts/me',
               },
               {
                 name: '所属部署シフト',
-                link: '/departmentshifts',
+                link: '/shift/department',
               },
               {
                 name: '全体シフト',
-                link: '/shifts',
+                link: '/shifts/all',
               }
             ]
           },
