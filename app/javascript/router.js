@@ -30,15 +30,15 @@ const router = new Router({
           component: AccountIndex
         },
         {
-          path: '/myshifts',
+          path: '/shifts/me',
           component: ShiftIndividualIndex
         },
         {
-          path: '/departmentshifts',
+          path: '/shifts/department',
           component: ShiftDepartmentIndex
         },
         {
-          path: '/shifts',
+          path: '/shifts/all',
           component: ShiftIndex
         },
         {
