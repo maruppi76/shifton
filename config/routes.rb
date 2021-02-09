@@ -29,9 +29,9 @@ Rails.application.routes.draw do
 
   # 以下vue-router使用時にError発生を防ぐための記述
   get '/sign_in', to: 'home#index'
-  get '/myshifts',  to: 'home#index'
-  get '/departmentshifts',  to: 'home#index'
-  get '/shifts',  to: 'home#index'
+  get '/shifts/me',  to: 'home#index'
+  get '/shifts/department',  to: 'home#index'
+  get '/shifts/all',  to: 'home#index'
   get '/shift_preferred',  to: 'home#index'
   get '/staff_management',  to: 'home#index'
   get '/shifts/create',  to: 'home#index'
