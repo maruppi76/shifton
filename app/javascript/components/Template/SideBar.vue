@@ -109,7 +109,7 @@
               },
               {
                 name: '所属部署シフト',
-                link: '/shift/department',
+                link: '/shifts/department',
               },
               {
                 name: '全体シフト',
