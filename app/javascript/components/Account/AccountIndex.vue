@@ -1,11 +1,11 @@
 <template>
   <div>
     <section>
-      <div class="text-center text-h4 mt-10 mb-10">アカウント情報</div>
+      <div class="text-center text-lg-h4 mt-10 mb-10">アカウント情報</div>
     </section>
     <v-container>
-      <v-row justify="center" class="mx-16">
-        <v-col cols="10">
+      <v-row justify="center" class="mx-lg-16">
+        <v-col cols="12" lg="10">
           <div class="BoxHeader text-body-1">
             アカウント
           </div>
@@ -32,7 +32,7 @@
             </table>
           </div>
         </v-col>
-        <v-col cols="10">
+        <v-col cols="12" lg="10">
           <div class="BoxHeader text-body-1">
             会社情報
           </div>
@@ -44,12 +44,13 @@
                   <td>{{ user.company.name }}</td>
                 </tr>
                 <tr>
-                  <th>所属部署（メイン）</th>
-                  <td v-if="user.department_main">{{ user.department_main.str }}</td>
+                  <th>所属部署<br/>（メイン）</th>
+                  <td v-if="user.department_main" class="pc-text">{{ user.department_main.str }}</td>
                   <td v-else>未設定</td>
+                  <td class="mobile-text">{{ user.department_main.mobile }}</td>
                 </tr>
                 <tr>
-                  <th>所属部署（サブ）</th>
+                  <th>所属部署<br/>（サブ）</th>
                   <td v-if="user.department_sub">{{ user.department_sub.str }}</td>
                   <td v-else>未設定</td>
                 </tr>
@@ -123,5 +124,23 @@ table {
   font-size: 13px;
   font-weight: 500;
   background-color: #fff;
+}
+
+.mobile-text {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .Table > tbody > tr > th {
+    width: 40%;
+  }
+
+  .pc-text {
+    display: none;
+  }
+
+  .mobile-text {
+    display: revert;
+  }
 }
 </style>
