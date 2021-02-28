@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <div class="text-center text-h4 mt-10 mb-10">アカウント情報</div>
+      <div class="text-center text-lg-h4 mt-10 mb-10">アカウント情報</div>
     </section>
     <v-container>
       <v-row justify="center" class="mx-16">
