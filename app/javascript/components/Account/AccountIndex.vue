@@ -45,8 +45,9 @@
                 </tr>
                 <tr>
                   <th>所属部署<br/>（メイン）</th>
-                  <td v-if="user.department_main">{{ user.department_main.str }}</td>
+                  <td v-if="user.department_main" class="pc-text">{{ user.department_main.str }}</td>
                   <td v-else>未設定</td>
+                  <td class="mobile-text">{{ user.department_main.mobile }}</td>
                 </tr>
                 <tr>
                   <th>所属部署<br/>（サブ）</th>
@@ -125,9 +126,21 @@ table {
   background-color: #fff;
 }
 
+.mobile-text {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .Table > tbody > tr > th {
     width: 40%;
+  }
+
+  .pc-text {
+    display: none;
+  }
+
+  .mobile-text {
+    display: revert;
   }
 }
 </style>

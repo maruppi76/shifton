@@ -1,5 +1,5 @@
 class DepartmentSerializer < ActiveModel::Serializer
-  attributes :id, :str
+  attributes :id, :str, :mobile
 
   def str
     str = ''
@@ -14,5 +14,12 @@ class DepartmentSerializer < ActiveModel::Serializer
       end
     end
     return str
+  end
+
+  def mobile
+    if object.id
+      mobile = Department.find(object.id)
+    end
+    return mobile.name
   end
 end
