@@ -44,12 +44,12 @@
                   <td>{{ user.company.name }}</td>
                 </tr>
                 <tr>
-                  <th>所属部署（メイン）</th>
+                  <th>所属部署<br/>（メイン）</th>
                   <td v-if="user.department_main">{{ user.department_main.str }}</td>
                   <td v-else>未設定</td>
                 </tr>
                 <tr>
-                  <th>所属部署（サブ）</th>
+                  <th>所属部署<br/>（サブ）</th>
                   <td v-if="user.department_sub">{{ user.department_sub.str }}</td>
                   <td v-else>未設定</td>
                 </tr>
@@ -123,5 +123,11 @@ table {
   font-size: 13px;
   font-weight: 500;
   background-color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .Table > tbody > tr > th {
+    width: 40%;
+  }
 }
 </style>
