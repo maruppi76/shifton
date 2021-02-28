@@ -4,8 +4,8 @@
       <div class="text-center text-lg-h4 mt-10 mb-10">アカウント情報</div>
     </section>
     <v-container>
-      <v-row justify="center" class="mx-lg-16 mx-1">
-        <v-col cols="10">
+      <v-row justify="center" class="mx-lg-16">
+        <v-col cols="12" lg="10">
           <div class="BoxHeader text-body-1">
             アカウント
           </div>
@@ -32,7 +32,7 @@
             </table>
           </div>
         </v-col>
-        <v-col cols="10">
+        <v-col cols="12" lg="10">
           <div class="BoxHeader text-body-1">
             会社情報
           </div>
