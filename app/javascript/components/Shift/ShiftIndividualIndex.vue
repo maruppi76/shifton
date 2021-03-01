@@ -59,7 +59,7 @@
       <v-simple-table class="ShiftViewTable">
         <template v-slot:default>
           <thead class="ShiftViewTable__Header">
-            <tr>
+            <tr class="grey lighten-2">
               <th class="text-center" width="8%">日付</th>
               <th class="text-center" width="5%">休日<br/>区分</th>
               <th class="text-center" width="5%">名称</th>
