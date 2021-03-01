@@ -75,9 +75,15 @@
               v-for="date in dates"
               :key="date.value"
               class="text-center"
-              :class="date.tc"
             >
-              <td class="grey--text text--darken-1">{{ date.text }}</td>
+              <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
+              <td>祝日</td>
+              <td>早番</td>
+              <td>本社</td>
+              <td>10:00</td>
+              <td>19:00</td>
+              <td></td>
+              <td></td>
             </tr>
           </tbody>
         </template>
