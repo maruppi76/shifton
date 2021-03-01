@@ -75,6 +75,7 @@
               v-for="date in dates"
               :key="date.value"
               class="text-center"
+              height="50px"
             >
               <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
               <td>祝日</td>
