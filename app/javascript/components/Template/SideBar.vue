@@ -104,7 +104,11 @@
             icon: 'mdi-calendar-month',
             lists: [
               {
-                name: '個人シフト',
+                name: '個人シフト(旧)',
+                link: '/shifts/me_old',
+              },
+              {
+                name: '個人シフト(新)',
                 link: '/shifts/me',
               },
               {
