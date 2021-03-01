@@ -144,5 +144,13 @@
 </script>
 
 <style lang="scss">
+.ShiftViewTable {
+  th, td{
+    border-right: thin solid #F5F5F5;
 
+    &:last-child{
+      border-right: none;
+    }
+  }
+}
 </style>
