@@ -27,7 +27,7 @@
         <v-col class="pa-0" cols="12" lg="4">
           <v-card tile shaped outlined>
             <v-chip
-              class="ma-8 px-5"
+              class="ma-2 pa-2 ma-lg-8 px-lg-5"
               color="success"
               outlined
               label
