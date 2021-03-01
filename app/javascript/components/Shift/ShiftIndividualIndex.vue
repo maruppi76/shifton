@@ -77,7 +77,7 @@
               class="text-center"
               :class="date.tc"
             >
-              <td>{{ date.text }}</td>
+              <td class="grey--text text--darken-1">{{ date.text }}</td>
             </tr>
           </tbody>
         </template>
