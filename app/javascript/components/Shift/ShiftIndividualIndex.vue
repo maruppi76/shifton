@@ -42,15 +42,15 @@
             <v-row class="ma-0 px-5" style="height: 100%;" justify="center">
               <v-col class="pa-0 my-auto mx-3" cols="3">
                 <div class="text-subtitle-2">出勤日数</div>
-                <div class="text-h6 font-weight-bold">２０ 日</div>
+                <div class="text-h6 font-weight-bold">17.5 日</div>
               </v-col>
               <v-col class="pa-0 my-auto mx-3" cols="3">
                 <div class="text-subtitle-2">公休日数</div>
-                <div class="text-h6 font-weight-bold">hogehoge</div>
+                <div class="text-h6 font-weight-bold">10 日</div>
               </v-col>
               <v-col class="pa-0 my-auto mx-3" cols="3">
                 <div class="text-subtitle-2">有休等日数</div>
-                <div class="text-h6 font-weight-bold">hogehoge</div>
+                <div class="text-h6 font-weight-bold">3.5 日</div>
               </v-col>
             </v-row>
           </v-card>
@@ -85,8 +85,24 @@
         .catch(error => console.log(error))
     },
   }
-
-  
-
-
 </script>
+
+<style lang="scss">
+.ShiftViewTable {
+  &__Header {
+    background-color: #ECEFF1;
+
+    td {
+      max-width: 40px;
+      width: 10%;
+    }
+    .w-15 {
+      width: 15%;
+    }
+
+    .w-20 {
+      width: 20%;
+    }
+  }
+}
+</style>
