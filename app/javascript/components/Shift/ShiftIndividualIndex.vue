@@ -24,7 +24,7 @@
         </v-col>
       </v-row>
       <v-row class="ma-0">
-        <v-col class="pa-0" cols="4">
+        <v-col class="pa-0" cols="12" lg="4">
           <v-card tile shaped outlined>
             <v-chip
               class="ma-8 px-5"
@@ -37,7 +37,7 @@
             </v-chip>
           </v-card>
         </v-col>
-        <v-col class="pa-0" cols="8">
+        <v-col class="pa-0" cols="12" lg="8">
           <v-card tile shaped outlined style="height: 100%;">
             <v-row class="ma-0 px-5" style="height: 100%;" justify="center">
               <v-col class="pa-0 my-auto mx-3" cols="3">
