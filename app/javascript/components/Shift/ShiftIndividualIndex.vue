@@ -145,20 +145,6 @@
 
 <style lang="scss">
 .ShiftViewTable {
-  &__Header {
-    background-color: #ECEFF1;
-
-    td {
-      max-width: 40px;
-      width: 10%;
-    }
-    .w-15 {
-      width: 15%;
-    }
-
-    .w-20 {
-      width: 20%;
-    }
-  }
+  
 }
 </style>
