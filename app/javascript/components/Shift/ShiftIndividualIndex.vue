@@ -60,14 +60,14 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-center">日付</th>
-              <th class="text-center">休日<br/>区分</th>
-              <th class="text-center">名称</th>
-              <th class="text-center">種別</th>
-              <th class="text-center">開始</th>
-              <th class="text-center">終了</th>
+              <th class="text-center" width="8%">日付</th>
+              <th class="text-center" width="5%">休日<br/>区分</th>
+              <th class="text-center" width="5%">名称</th>
+              <th class="text-center" width="8%">種別</th>
+              <th class="text-center" width="5%">開始</th>
+              <th class="text-center" width="5%">終了</th>
               <th class="text-center">備考</th>
-              <th class="text-center"></th>
+              <th class="text-center" width="5%"></th>
             </tr>
           </thead>
           <tbody>
