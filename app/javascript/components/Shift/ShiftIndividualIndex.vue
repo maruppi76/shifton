@@ -14,12 +14,46 @@
           <v-row>
             <v-select
               label="Standard"
-              class="mr-1"
+              class="mr-2"
             ></v-select>
             <v-select
               label="Standard"
+              class="mr-2"
             ></v-select>
           </v-row>
+        </v-col>
+      </v-row>
+      <v-row class="ma-0">
+        <v-col class="pa-0" cols="4">
+          <v-card tile shaped outlined>
+            <v-chip
+              class="ma-8 px-5"
+              color="success"
+              outlined
+              label
+              large
+            >
+              確定済
+            </v-chip>
+          </v-card>
+        </v-col>
+        <v-col class="pa-0" cols="8">
+          <v-card tile shaped outlined style="height: 100%;">
+            <v-row class="ma-0 px-5" style="height: 100%;" justify="center">
+              <v-col class="pa-0 my-auto mx-3" cols="3">
+                <div class="text-subtitle-2">出勤日数</div>
+                <div class="text-h6 font-weight-bold">２０ 日</div>
+              </v-col>
+              <v-col class="pa-0 my-auto mx-3" cols="3">
+                <div class="text-subtitle-2">公休日数</div>
+                <div class="text-h6 font-weight-bold">hogehoge</div>
+              </v-col>
+              <v-col class="pa-0 my-auto mx-3" cols="3">
+                <div class="text-subtitle-2">有休等日数</div>
+                <div class="text-h6 font-weight-bold">hogehoge</div>
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
       </v-row>
     </v-card>
