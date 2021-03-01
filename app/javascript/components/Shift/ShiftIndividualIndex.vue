@@ -56,7 +56,7 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-simple-table fixed-header>
+      <v-simple-table>
         <template v-slot:default>
           <thead>
             <tr>
@@ -71,7 +71,14 @@
             </tr>
           </thead>
           <tbody>
-            
+            <tr
+              v-for="date in dates"
+              :key="date.value"
+              class="text-center"
+              :class="date.tc"
+            >
+              <td>{{ date.text }}</td>
+            </tr>
           </tbody>
         </template>
       </v-simple-table>
@@ -96,6 +103,29 @@
       }
     },
     mounted(){
+      let date = moment(this.day);
+      let num = moment(date).daysInMonth()
+      let dates = []
+      
+      for(let i = 1; i < num + 1; i++){
+        let result = moment(date).date(i)
+        let text = result.format('MM/DD(ddd)')
+        let textmiddle = result.format('ddd')
+        let value = result.format('YYYY-MM-DD')
+        let hash = ''
+
+        if(value == moment().format("YYYY-MM-DD")){
+          hash = {text: text, value: value, tc: 'teal lighten-5'}
+        } else if(textmiddle == '土'){
+          hash = {text: text, value: value, tc: 'blue lighten-5'}
+        } else if(textmiddle == '日'){
+          hash = {text: text, value: value, tc: 'red lighten-5'}
+        } else {
+          hash = {text: text, value: value}
+        }
+        dates.push(hash)
+      }
+      this.dates = dates
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
