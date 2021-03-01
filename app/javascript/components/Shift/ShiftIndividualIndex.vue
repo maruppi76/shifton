@@ -56,9 +56,9 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-simple-table>
+      <v-simple-table class="ShiftViewTable">
         <template v-slot:default>
-          <thead>
+          <thead class="ShiftViewTable__Header">
             <tr>
               <th class="text-center" width="8%">日付</th>
               <th class="text-center" width="5%">休日<br/>区分</th>
@@ -70,7 +70,7 @@
               <th class="text-center" width="5%"></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="ShiftViewTable__Body">
             <tr
               v-for="date in dates"
               :key="date.value"
@@ -81,8 +81,8 @@
               <td>祝日</td>
               <td>早番</td>
               <td>本社</td>
-              <td>10:00</td>
-              <td>19:00</td>
+              <td class="text-lg-h6">10:00</td>
+              <td class="text-lg-h6">19:00</td>
               <td></td>
               <td></td>
             </tr>
