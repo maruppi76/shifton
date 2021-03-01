@@ -56,6 +56,25 @@
           </v-card>
         </v-col>
       </v-row>
+      <v-simple-table fixed-header>
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>休日<br/>区分</th>
+              <th>名称</th>
+              <th>種別</th>
+              <th>開始</th>
+              <th>終了</th>
+              <th>備考</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </template>
+      </v-simple-table>
     </v-card>
   </v-app>
 </template>
