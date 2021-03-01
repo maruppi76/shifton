@@ -144,7 +144,5 @@
 </script>
 
 <style lang="scss">
-.ShiftViewTable {
-  
-}
+
 </style>
