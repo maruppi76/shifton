@@ -172,7 +172,29 @@
     },
     methods: {
       changeCalendar() {
-        console.log('ボタンクリックOK!')
+        const year = this.selectYear
+        const month = this.selectMonth.slice(0, 2) - 1
+        const startday = moment().year(year).month(month).date(1)
+        const num = moment(startday).daysInMonth()
+        let dates = []
+        for(let i = 1; i < num + 1; i++){
+          let result = moment().year(year).month(month).date(i)
+          let text = result.format('MM/DD(ddd)')
+          let textmiddle = result.format('ddd')
+          let value = result.format('YYYY-MM-DD')
+          let hash = ''
+          if(value == moment().format("YYYY-MM-DD")){
+            hash = {text: text, value: value, tc: 'teal lighten-5'}
+          } else if(textmiddle == '土'){
+            hash = {text: text, value: value, tc: 'blue lighten-5'}
+          } else if(textmiddle == '日'){
+            hash = {text: text, value: value, tc: 'red lighten-5'}
+          } else {
+            hash = {text: text, value: value}
+          }
+          dates.push(hash)
+        }
+        this.dates = dates
       }
     }
   }
