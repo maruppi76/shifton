@@ -138,7 +138,6 @@
       }
       this.dates = dates
       this.years = years
-      console.log(years)
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
