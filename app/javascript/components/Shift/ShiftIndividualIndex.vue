@@ -12,7 +12,7 @@
         </v-col>
         <v-col cols="auto">
           <v-row align="center" justify="end">
-            <v-col cols="2">
+            <v-col cols="3" lg="2" class="pr-0">
               <v-select
                 v-model="selectYear"
                 class="mr-2"
@@ -20,14 +20,14 @@
                 @change="changeYear"
               ></v-select>
             </v-col>
-            <v-col cols="3">
+            <v-col cols="6" lg="3" class="pr-0">
               <v-select
                 v-model="selectMonth"
                 class="mr-2"
                 :items="monthes"
               ></v-select>
             </v-col>
-            <v-col cols="2">
+            <v-col cols="3" lg="2">
               <v-btn
                 outlined
                 class="mr-2"
