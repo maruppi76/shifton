@@ -30,6 +30,7 @@
               <v-btn
                 outlined
                 class="mr-2"
+                @click="changeCalendar"
               >表示</v-btn>
             </v-col>
           </v-row>
@@ -169,6 +170,11 @@
         })
         .catch(error => console.log(error))
     },
+    methods: {
+      changeCalendar() {
+        console.log('ボタンクリックOK!')
+      }
+    }
   }
 </script>
 
