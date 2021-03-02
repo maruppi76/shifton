@@ -11,21 +11,27 @@
           {{ current_user.first_name }}  {{ current_user.last_name }}
         </v-col>
         <v-col cols="auto">
-          <v-row align="center">
-            <v-select
-              v-model="selectYear"
-              class="mr-2"
-              :items="years"
-            ></v-select>
-            <v-select
-              v-model="selectMonth"
-              class="mr-2"
-              :items="monthes"
-            ></v-select>
-            <v-btn
-              outlined
-              class="mr-2"
-            >表示</v-btn>
+          <v-row align="center" justify="end">
+            <v-col cols="2">
+              <v-select
+                v-model="selectYear"
+                class="mr-2"
+                :items="years"
+              ></v-select>
+            </v-col>
+            <v-col cols="3">
+              <v-select
+                v-model="selectMonth"
+                class="mr-2"
+                :items="monthes"
+              ></v-select>
+            </v-col>
+            <v-col cols="2">
+              <v-btn
+                outlined
+                class="mr-2"
+              >表示</v-btn>
+            </v-col>
           </v-row>
         </v-col>
       </v-row>
