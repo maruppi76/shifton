@@ -18,8 +18,9 @@
               :items="years"
             ></v-select>
             <v-select
-              label="Standard"
+              v-model="selectMonth"
               class="mr-2"
+              :items="monthes"
             ></v-select>
           </v-row>
         </v-col>
@@ -106,6 +107,7 @@
         dates: [],
         shifts: [],
         years: [],
+        monthes: [],
         selectYear: moment(this.day).year(),
         selectMonth: '',
         current_user: '',
@@ -117,6 +119,7 @@
       let num = moment(date).daysInMonth()
       let year = moment(date).year()
       let years = [year - 1, year, year + 1, year + 2]
+      let monthes = []
       let dates = []
       
       for(let i = 1; i < num + 1; i++){
@@ -137,8 +140,18 @@
         }
         dates.push(hash)
       }
+
+      for(let i = 0; i < 12; i ++){
+        let check_start_day = moment().year(year).month(i).date(1)
+        let start_day = check_start_day.format('MM/DD')
+        let end_day = moment().year(year).month(i).date(moment(check_start_day).daysInMonth()).format('MM/DD')
+        let month_text = start_day + '~' + end_day
+        monthes.push(month_text)
+      }
       this.dates = dates
       this.years = years
+      this.monthes = monthes
+      this.selectMonth = monthes[moment().month()]
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
