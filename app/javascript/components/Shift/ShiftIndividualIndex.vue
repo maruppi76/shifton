@@ -93,7 +93,12 @@
               height="50px"
             >
               <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
-              <td>祝日</td>
+              <td
+                v-if="date.holiday"
+              >祝日</td>
+              <td
+                v-else
+              ></td>
               <td>早番</td>
               <td>本社</td>
               <td class="text-lg-subtitle-1 font-weight-medium">10:00</td>
@@ -141,16 +146,17 @@
         let text = result.format('MM/DD(ddd)')
         let textmiddle = result.format('ddd')
         let value = result.format('YYYY-MM-DD')
+        let holiday = holiday_jp.isHoliday(value)
         let hash = ''
 
         if(value == moment().format("YYYY-MM-DD")){
-          hash = {text: text, value: value, tc: 'teal lighten-5'}
+          hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday}
         } else if(textmiddle == '土'){
-          hash = {text: text, value: value, tc: 'blue lighten-5'}
+          hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday}
         } else if(textmiddle == '日'){
-          hash = {text: text, value: value, tc: 'red lighten-5'}
+          hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday}
         } else {
-          hash = {text: text, value: value}
+          hash = {text: text, value: value, holiday: holiday}
         }
         dates.push(hash)
       }
@@ -185,15 +191,16 @@
           let text = result.format('MM/DD(ddd)')
           let textmiddle = result.format('ddd')
           let value = result.format('YYYY-MM-DD')
+          let holiday = holiday_jp.isHoliday(value)
           let hash = ''
           if(value == moment().format("YYYY-MM-DD")){
-            hash = {text: text, value: value, tc: 'teal lighten-5'}
+            hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday}
           } else if(textmiddle == '土'){
-            hash = {text: text, value: value, tc: 'blue lighten-5'}
+            hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday}
           } else if(textmiddle == '日'){
-            hash = {text: text, value: value, tc: 'red lighten-5'}
+            hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday}
           } else {
-            hash = {text: text, value: value}
+            hash = {text: text, value: value, holiday: holiday}
           }
           dates.push(hash)
         }
