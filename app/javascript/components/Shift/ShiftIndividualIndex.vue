@@ -99,11 +99,46 @@
               <td
                 v-else
               ></td>
-              <td>早番</td>
-              <td>本社</td>
-              <td class="text-lg-subtitle-1 font-weight-medium">10:00</td>
-              <td class="text-lg-subtitle-1 font-weight-medium">19:00</td>
-              <td></td>
+              <td 
+                class="text-center"
+                v-if="filterShiftName(date.value).length < 2"
+              >{{ filterShiftName(date.value)[0] }}</td>
+              <td 
+                class="text-center"
+                v-else
+              >※</td>
+              <td 
+                v-if="filterShiftPhase(date.value).length < 2"
+                class="text-center"
+              >{{ filterShiftPhase(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-center"
+              >※</td>
+              <td 
+                v-if="filterShiftSTime(date.value).length < 2"
+                class="text-lg-subtitle-1 font-weight-medium"
+              >{{ filterShiftSTime(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-lg-subtitle-1 font-weight-medium"
+              >※</td>
+              <td 
+                v-if="filterShiftETime(date.value).length < 2"
+                class="text-lg-subtitle-1 font-weight-medium"
+              >{{ filterShiftETime(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-lg-subtitle-1 font-weight-medium"
+                >※</td>
+              <td 
+                v-if="filterShiftRemarks(date.value).length < 2"
+                class="text-center"
+              >{{ filterShiftRemarks(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-center"
+              >※</td>
               <td></td>
             </tr>
           </tbody>
@@ -172,6 +207,12 @@
       this.years = years
       this.monthes = monthes
       this.selectMonth = monthes[moment().month()]
+      axios.get('/api/shifts/my_shift.json')
+        .then(response => {
+          this.shifts = response.data
+          console.log(this.shifts)
+        })
+        .catch(error => console.log(error))
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
@@ -180,6 +221,51 @@
         .catch(error => console.log(error))
     },
     methods: {
+      filterShiftName(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key) {
+            filterd.push(shift.pattern.name);
+          }
+        });
+        return filterd
+      },
+      filterShiftPhase(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key && shift.type) {
+            filterd.push(shift.type.name);
+          }
+        });
+        return filterd
+      },
+      filterShiftSTime(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key && shift.pattern.start_time) {
+            filterd.push(moment(shift.pattern.start_time).format('HH:mm'));
+          }
+        });
+        return filterd
+      },
+      filterShiftETime(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key && shift.pattern.end_time) {
+            filterd.push(moment(shift.pattern.end_time).format('HH:mm'));
+          }
+        });
+        return filterd
+      },
+      filterShiftRemarks(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key) {
+            filterd.push(shift.remarks);
+          }
+        });
+        return filterd
+      },
       changeCalendar() {
         const year = this.selectYear
         const month = this.selectMonth.slice(0, 2) - 1
