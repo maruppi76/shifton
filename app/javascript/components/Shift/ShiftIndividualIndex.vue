@@ -208,7 +208,7 @@
           monthes.push(month_text)
         }
         this.monthes = monthes
-        this.selectMonth = monthes[moment().month()]
+        this.selectMonth = monthes[0]
       }
     }
   }
