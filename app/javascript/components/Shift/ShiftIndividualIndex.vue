@@ -11,7 +11,7 @@
           {{ current_user.first_name }}  {{ current_user.last_name }}
         </v-col>
         <v-col cols="auto">
-          <v-row>
+          <v-row align="center">
             <v-select
               v-model="selectYear"
               class="mr-2"
