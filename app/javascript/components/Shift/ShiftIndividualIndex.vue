@@ -107,6 +107,7 @@
         shifts: [],
         years: [],
         selectYear: moment(this.day).year(),
+        selectMonth: '',
         current_user: '',
         menu: false,
       }
