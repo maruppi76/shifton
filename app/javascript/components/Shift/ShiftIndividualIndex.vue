@@ -81,8 +81,8 @@
               <td>祝日</td>
               <td>早番</td>
               <td>本社</td>
-              <td class="text-lg-h6">10:00</td>
-              <td class="text-lg-h6">19:00</td>
+              <td class="text-lg-subtitle-1 font-weight-medium">10:00</td>
+              <td class="text-lg-subtitle-1 font-weight-medium">19:00</td>
               <td></td>
               <td></td>
             </tr>
