@@ -13,8 +13,9 @@
         <v-col cols="auto">
           <v-row>
             <v-select
-              label="Standard"
+              v-model="selectYear"
               class="mr-2"
+              :items="years"
             ></v-select>
             <v-select
               label="Standard"
@@ -105,6 +106,8 @@
         checkRadio: '1',
         dates: [],
         shifts: [],
+        years: [],
+        selectYear: moment(this.day).year(),
         current_user: '',
         menu: false,
       }
@@ -112,6 +115,8 @@
     mounted(){
       let date = moment(this.day);
       let num = moment(date).daysInMonth()
+      let year = moment(date).year()
+      let years = [year - 1, year, year + 1, year + 2]
       let dates = []
       
       for(let i = 1; i < num + 1; i++){
@@ -133,6 +138,8 @@
         dates.push(hash)
       }
       this.dates = dates
+      this.years = years
+      console.log(years)
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
