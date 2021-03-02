@@ -17,6 +17,7 @@
                 v-model="selectYear"
                 class="mr-2"
                 :items="years"
+                @change="changeYear"
               ></v-select>
             </v-col>
             <v-col cols="3">
@@ -195,6 +196,9 @@
           dates.push(hash)
         }
         this.dates = dates
+      },
+      changeYear() {
+        console.log('Yearチェンジ確認！')
       }
     }
   }
