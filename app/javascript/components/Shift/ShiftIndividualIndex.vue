@@ -198,7 +198,17 @@
         this.dates = dates
       },
       changeYear() {
-        console.log('Yearチェンジ確認！')
+        const year = this.selectYear
+        let monthes = []
+        for(let i = 0; i < 12; i ++){
+          let check_start_day = moment().year(year).month(i).date(1)
+          let start_day = check_start_day.format('MM/DD')
+          let end_day = moment().year(year).month(i).date(moment(check_start_day).daysInMonth()).format('MM/DD')
+          let month_text = start_day + '~' + end_day
+          monthes.push(month_text)
+        }
+        this.monthes = monthes
+        this.selectMonth = monthes[moment().month()]
       }
     }
   }
