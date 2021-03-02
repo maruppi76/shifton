@@ -8,7 +8,7 @@
         <v-list-item-subtitle class="caption">
           {{ user.email }}
         </v-list-item-subtitle>
-        <v-list-item-subtitle class="caption">
+        <v-list-item-subtitle class="caption" v-if="user.company">
           {{ user.company.name}}
         </v-list-item-subtitle>
       </v-list-item-content>
