@@ -5,29 +5,43 @@
         class="blue-grey lighten-5"
       >確定シフト</v-card-title>
     </v-card>
-    <v-card elevation="2" class="rounded-0 ma-2">
+    <v-card elevation="2" class="rounded-0 ma-1 ma-lg-4">
       <v-row class="pa-3" justify="space-between">
         <v-col cols="auto" class="text-h5">
           {{ current_user.first_name }}  {{ current_user.last_name }}
         </v-col>
         <v-col cols="auto">
-          <v-row>
-            <v-select
-              label="Standard"
-              class="mr-2"
-            ></v-select>
-            <v-select
-              label="Standard"
-              class="mr-2"
-            ></v-select>
+          <v-row align="center" justify="end">
+            <v-col cols="3" lg="2" class="pr-0">
+              <v-select
+                v-model="selectYear"
+                class="mr-2"
+                :items="years"
+                @change="changeYear"
+              ></v-select>
+            </v-col>
+            <v-col cols="6" lg="3" class="pr-0">
+              <v-select
+                v-model="selectMonth"
+                class="mr-2"
+                :items="monthes"
+              ></v-select>
+            </v-col>
+            <v-col cols="3" lg="2">
+              <v-btn
+                outlined
+                class="mr-2"
+                @click="changeCalendar"
+              >表示</v-btn>
+            </v-col>
           </v-row>
         </v-col>
       </v-row>
       <v-row class="ma-0">
-        <v-col class="pa-0" cols="4">
+        <v-col class="pa-0" cols="12" lg="4">
           <v-card tile shaped outlined>
             <v-chip
-              class="ma-8 px-5"
+              class="ma-2 pa-2 ma-lg-8 px-lg-5"
               color="success"
               outlined
               label
@@ -37,18 +51,19 @@
             </v-chip>
           </v-card>
         </v-col>
-        <v-col class="pa-0" cols="8">
+        <v-col class="pa-0" cols="12" lg="8">
           <v-card tile shaped outlined style="height: 100%;">
-            <v-row class="ma-0 px-5" style="height: 100%;" justify="center">
-              <v-col class="pa-0 my-auto mx-3" cols="3">
+            <v-card-title class="py-1">サマリー</v-card-title>
+            <v-row class="ma-0" justify="center">
+              <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">出勤日数</div>
                 <div class="text-h6 font-weight-bold">17.5 日</div>
               </v-col>
-              <v-col class="pa-0 my-auto mx-3" cols="3">
+              <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">公休日数</div>
                 <div class="text-h6 font-weight-bold">10 日</div>
               </v-col>
-              <v-col class="pa-0 my-auto mx-3" cols="3">
+              <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">有休等日数</div>
                 <div class="text-h6 font-weight-bold">3.5 日</div>
               </v-col>
@@ -56,6 +71,39 @@
           </v-card>
         </v-col>
       </v-row>
+      <v-simple-table class="ShiftViewTable">
+        <template v-slot:default>
+          <thead class="ShiftViewTable__Header">
+            <tr class="grey lighten-2">
+              <th class="text-center" width="8%">日付</th>
+              <th class="text-center" width="5%">休日<br/>区分</th>
+              <th class="text-center" width="5%">名称</th>
+              <th class="text-center" width="8%">種別</th>
+              <th class="text-center" width="5%">開始</th>
+              <th class="text-center" width="5%">終了</th>
+              <th class="text-center">備考</th>
+              <th class="text-center" width="5%"></th>
+            </tr>
+          </thead>
+          <tbody class="ShiftViewTable__Body">
+            <tr
+              v-for="date in dates"
+              :key="date.value"
+              class="text-center"
+              height="50px"
+            >
+              <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
+              <td>祝日</td>
+              <td>早番</td>
+              <td>本社</td>
+              <td class="text-lg-subtitle-1 font-weight-medium">10:00</td>
+              <td class="text-lg-subtitle-1 font-weight-medium">19:00</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
     </v-card>
   </v-app>
 </template>
@@ -69,14 +117,54 @@
     data(){
       return {
         day : new Date().toISOString().substr(0, 7),
-        checkRadio: '1',
         dates: [],
         shifts: [],
+        years: [],
+        monthes: [],
+        selectYear: moment(this.day).year(),
+        selectMonth: '',
         current_user: '',
         menu: false,
       }
     },
     mounted(){
+      let date = moment(this.day);
+      let num = moment(date).daysInMonth()
+      let year = moment(date).year()
+      let years = [year - 1, year, year + 1, year + 2]
+      let monthes = []
+      let dates = []
+      
+      for(let i = 1; i < num + 1; i++){
+        let result = moment(date).date(i)
+        let text = result.format('MM/DD(ddd)')
+        let textmiddle = result.format('ddd')
+        let value = result.format('YYYY-MM-DD')
+        let hash = ''
+
+        if(value == moment().format("YYYY-MM-DD")){
+          hash = {text: text, value: value, tc: 'teal lighten-5'}
+        } else if(textmiddle == '土'){
+          hash = {text: text, value: value, tc: 'blue lighten-5'}
+        } else if(textmiddle == '日'){
+          hash = {text: text, value: value, tc: 'red lighten-5'}
+        } else {
+          hash = {text: text, value: value}
+        }
+        dates.push(hash)
+      }
+
+      for(let i = 0; i < 12; i ++){
+        let check_start_day = moment().year(year).month(i).date(1)
+        let start_day = check_start_day.format('MM/DD')
+        let end_day = moment().year(year).month(i).date(moment(check_start_day).daysInMonth()).format('MM/DD')
+        let month_text = start_day + '~' + end_day
+        monthes.push(month_text)
+      }
+      this.dates = dates
+      this.years = years
+      this.monthes = monthes
+      this.selectMonth = monthes[moment().month()]
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
@@ -84,24 +172,56 @@
         })
         .catch(error => console.log(error))
     },
+    methods: {
+      changeCalendar() {
+        const year = this.selectYear
+        const month = this.selectMonth.slice(0, 2) - 1
+        const startday = moment().year(year).month(month).date(1)
+        const num = moment(startday).daysInMonth()
+        let dates = []
+        for(let i = 1; i < num + 1; i++){
+          let result = moment().year(year).month(month).date(i)
+          let text = result.format('MM/DD(ddd)')
+          let textmiddle = result.format('ddd')
+          let value = result.format('YYYY-MM-DD')
+          let hash = ''
+          if(value == moment().format("YYYY-MM-DD")){
+            hash = {text: text, value: value, tc: 'teal lighten-5'}
+          } else if(textmiddle == '土'){
+            hash = {text: text, value: value, tc: 'blue lighten-5'}
+          } else if(textmiddle == '日'){
+            hash = {text: text, value: value, tc: 'red lighten-5'}
+          } else {
+            hash = {text: text, value: value}
+          }
+          dates.push(hash)
+        }
+        this.dates = dates
+      },
+      changeYear() {
+        const year = this.selectYear
+        let monthes = []
+        for(let i = 0; i < 12; i ++){
+          let check_start_day = moment().year(year).month(i).date(1)
+          let start_day = check_start_day.format('MM/DD')
+          let end_day = moment().year(year).month(i).date(moment(check_start_day).daysInMonth()).format('MM/DD')
+          let month_text = start_day + '~' + end_day
+          monthes.push(month_text)
+        }
+        this.monthes = monthes
+        this.selectMonth = monthes[0]
+      }
+    }
   }
 </script>
 
 <style lang="scss">
 .ShiftViewTable {
-  &__Header {
-    background-color: #ECEFF1;
+  th, td{
+    border-right: thin solid #F5F5F5;
 
-    td {
-      max-width: 40px;
-      width: 10%;
-    }
-    .w-15 {
-      width: 15%;
-    }
-
-    .w-20 {
-      width: 20%;
+    &:last-child{
+      border-right: none;
     }
   }
 }
