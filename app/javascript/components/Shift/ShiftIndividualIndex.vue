@@ -53,16 +53,17 @@
         </v-col>
         <v-col class="pa-0" cols="12" lg="8">
           <v-card tile shaped outlined style="height: 100%;">
-            <v-row class="ma-0 px-5" style="height: 100%;" justify="center">
-              <v-col class="pa-0 my-auto mx-3" cols="3">
+            <v-card-title class="py-1">サマリー</v-card-title>
+            <v-row class="ma-0" justify="center">
+              <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">出勤日数</div>
                 <div class="text-h6 font-weight-bold">17.5 日</div>
               </v-col>
-              <v-col class="pa-0 my-auto mx-3" cols="3">
+              <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">公休日数</div>
                 <div class="text-h6 font-weight-bold">10 日</div>
               </v-col>
-              <v-col class="pa-0 my-auto mx-3" cols="3">
+              <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">有休等日数</div>
                 <div class="text-h6 font-weight-bold">3.5 日</div>
               </v-col>
