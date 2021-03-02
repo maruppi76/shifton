@@ -103,7 +103,6 @@
     data(){
       return {
         day : new Date().toISOString().substr(0, 7),
-        checkRadio: '1',
         dates: [],
         shifts: [],
         years: [],
