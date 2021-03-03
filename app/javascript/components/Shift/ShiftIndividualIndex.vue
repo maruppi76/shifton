@@ -183,16 +183,21 @@
         let textmiddle = result.format('ddd')
         let value = result.format('YYYY-MM-DD')
         let holiday = holiday_jp.isHoliday(value)
+        let holiday_name = ''
         let hash = ''
 
+        if (holiday){
+          holiday_name = holiday_jp.between(new Date(value), new Date(value))[0]['name']
+        }
+
         if(value == moment().format("YYYY-MM-DD")){
-          hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday}
+          hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday, holiday_name: holiday_name}
         } else if(textmiddle == '土'){
-          hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday}
+          hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday, holiday_name: holiday_name}
         } else if(textmiddle == '日'){
-          hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday}
+          hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday, holiday_name: holiday_name}
         } else {
-          hash = {text: text, value: value, holiday: holiday}
+          hash = {text: text, value: value, holiday: holiday, holiday_name: holiday_name}
         }
         dates.push(hash)
       }
@@ -208,6 +213,7 @@
       this.years = years
       this.monthes = monthes
       this.selectMonth = monthes[moment().month()]
+      console.log(dates)
       axios.get('/api/shifts/my_shift.json')
         .then(response => {
           this.shifts = response.data
@@ -279,15 +285,21 @@
           let textmiddle = result.format('ddd')
           let value = result.format('YYYY-MM-DD')
           let holiday = holiday_jp.isHoliday(value)
+          let holiday_name = ''
           let hash = ''
+
+          if (holiday){
+            holiday_name = holiday_jp.between(new Date(value), new Date(value))[0]['name']
+          }
+
           if(value == moment().format("YYYY-MM-DD")){
-            hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday}
+            hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday, holiday_name: holiday_name}
           } else if(textmiddle == '土'){
-            hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday}
+            hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday, holiday_name: holiday_name}
           } else if(textmiddle == '日'){
-            hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday}
+            hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday, holiday_name: holiday_name}
           } else {
-            hash = {text: text, value: value, holiday: holiday}
+            hash = {text: text, value: value, holiday: holiday, holiday_name: holiday_name}
           }
           dates.push(hash)
         }
