@@ -220,7 +220,6 @@
       this.years = years
       this.monthes = monthes
       this.selectMonth = monthes[moment().month()]
-      console.log(dates)
       axios.get('/api/shifts/my_shift.json')
         .then(response => {
           this.shifts = response.data
