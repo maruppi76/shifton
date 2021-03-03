@@ -57,15 +57,15 @@
             <v-row class="ma-0" justify="center">
               <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">出勤日数</div>
-                <div class="text-h6 font-weight-bold">17.5 日</div>
+                <div class="text-h6 font-weight-bold">{{ countWorkDays() }} 日</div>
               </v-col>
               <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">公休日数</div>
-                <div class="text-h6 font-weight-bold">10 日</div>
+                <div class="text-h6 font-weight-bold">{{ countHolidays() }} 日</div>
               </v-col>
               <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">有休等日数</div>
-                <div class="text-h6 font-weight-bold">3.5 日</div>
+                <div class="text-h6 font-weight-bold">{{ countPaidHolidays() }} 日</div>
               </v-col>
             </v-row>
           </v-card>
@@ -93,12 +93,60 @@
               height="50px"
             >
               <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
-              <td>祝日</td>
-              <td>早番</td>
-              <td>本社</td>
-              <td class="text-lg-subtitle-1 font-weight-medium">10:00</td>
-              <td class="text-lg-subtitle-1 font-weight-medium">19:00</td>
-              <td></td>
+              <v-tooltip top v-if="date.holiday">
+                <template v-slot:activator="{ on, attrs }">
+                  <td
+                    v-bind="attrs"
+                    v-on="on"
+                    class="text-no-wrap"
+                  >祝日</td>
+                </template>
+                <span>{{ date.holiday_name }}</span>
+              </v-tooltip>
+              
+              <td
+                v-else
+              ></td>
+              <td 
+                class="text-no-wrap"
+                v-if="filterShiftName(date.value).length < 2"
+              >{{ filterShiftName(date.value)[0] }}</td>
+              <td 
+                class="text-no-wrap"
+                v-else
+              >※</td>
+              <td 
+                v-if="filterShiftPhase(date.value).length < 2"
+                class="text-no-wrap"
+              >{{ filterShiftPhase(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-no-wrap"
+              >※</td>
+              <td 
+                v-if="filterShiftSTime(date.value).length < 2"
+                class="text-lg-subtitle-1 font-weight-medium"
+              >{{ filterShiftSTime(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-lg-subtitle-1 font-weight-medium"
+              >※</td>
+              <td 
+                v-if="filterShiftETime(date.value).length < 2"
+                class="text-lg-subtitle-1 font-weight-medium"
+              >{{ filterShiftETime(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-lg-subtitle-1 font-weight-medium"
+                >※</td>
+              <td 
+                v-if="filterShiftRemarks(date.value).length < 2"
+                class="text-no-wrap"
+              >{{ filterShiftRemarks(date.value)[0] }}</td>
+              <td 
+                v-else
+                class="text-no-wrap"
+              >※</td>
               <td></td>
             </tr>
           </tbody>
@@ -110,6 +158,7 @@
 
 <script>
   import moment from 'moment'
+  import holiday_jp from '@holiday-jp/holiday_jp';
   import axios from 'axios';
   moment.locale('ja')
 
@@ -140,16 +189,22 @@
         let text = result.format('MM/DD(ddd)')
         let textmiddle = result.format('ddd')
         let value = result.format('YYYY-MM-DD')
+        let holiday = holiday_jp.isHoliday(value)
+        let holiday_name = ''
         let hash = ''
 
+        if (holiday){
+          holiday_name = holiday_jp.between(new Date(value), new Date(value))[0]['name']
+        }
+
         if(value == moment().format("YYYY-MM-DD")){
-          hash = {text: text, value: value, tc: 'teal lighten-5'}
+          hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday, holiday_name: holiday_name}
         } else if(textmiddle == '土'){
-          hash = {text: text, value: value, tc: 'blue lighten-5'}
+          hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday, holiday_name: holiday_name}
         } else if(textmiddle == '日'){
-          hash = {text: text, value: value, tc: 'red lighten-5'}
+          hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday, holiday_name: holiday_name}
         } else {
-          hash = {text: text, value: value}
+          hash = {text: text, value: value, holiday: holiday, holiday_name: holiday_name}
         }
         dates.push(hash)
       }
@@ -165,6 +220,12 @@
       this.years = years
       this.monthes = monthes
       this.selectMonth = monthes[moment().month()]
+      axios.get('/api/shifts/my_shift.json')
+        .then(response => {
+          this.shifts = response.data
+          console.log(this.shifts)
+        })
+        .catch(error => console.log(error))
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
@@ -173,6 +234,90 @@
         .catch(error => console.log(error))
     },
     methods: {
+      countWorkDays(){
+        let start_day = moment(this.selectMonth.slice(0,5)).year(this.selectYear).format('YYYY-MM-DD')
+        let end_day = moment(this.selectMonth.slice(-5)).year(this.selectYear).format('YYYY-MM-DD')
+        let workdays = 0
+        this.shifts.forEach(shift => {
+          if(shift.date >= start_day && shift.date <= end_day){
+            if(shift.pattern.pattern_type == '出勤日'){
+              workdays += 1
+            }
+          }
+        })
+        return workdays
+      },
+      countHolidays(){
+        let start_day = moment(this.selectMonth.slice(0,5)).year(this.selectYear).format('YYYY-MM-DD')
+        let end_day = moment(this.selectMonth.slice(-5)).year(this.selectYear).format('YYYY-MM-DD')
+        let holidays = 0
+        this.shifts.forEach(shift => {
+          if(shift.date >= start_day && shift.date <= end_day){
+            if(shift.pattern.pattern_type == '休日'){
+              holidays += 1
+            }
+          }
+        })
+        return holidays
+      },
+      countPaidHolidays(){
+        let start_day = moment(this.selectMonth.slice(0,5)).year(this.selectYear).format('YYYY-MM-DD')
+        let end_day = moment(this.selectMonth.slice(-5)).year(this.selectYear).format('YYYY-MM-DD')
+        let paid_holidays = 0
+        this.shifts.forEach(shift => {
+          if(shift.date >= start_day && shift.date <= end_day){
+            if(shift.pattern.pattern_type == '有休等'){
+              paid_holidays += 1
+            }
+          }
+        })
+        return paid_holidays
+      },
+      filterShiftName(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key) {
+            filterd.push(shift.pattern.name);
+          }
+        });
+        return filterd
+      },
+      filterShiftPhase(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key && shift.type) {
+            filterd.push(shift.type.name);
+          }
+        });
+        return filterd
+      },
+      filterShiftSTime(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key && shift.pattern.start_time) {
+            filterd.push(moment(shift.pattern.start_time).format('HH:mm'));
+          }
+        });
+        return filterd
+      },
+      filterShiftETime(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key && shift.pattern.end_time) {
+            filterd.push(moment(shift.pattern.end_time).format('HH:mm'));
+          }
+        });
+        return filterd
+      },
+      filterShiftRemarks(key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.date == key) {
+            filterd.push(shift.remarks);
+          }
+        });
+        return filterd
+      },
       changeCalendar() {
         const year = this.selectYear
         const month = this.selectMonth.slice(0, 2) - 1
@@ -184,15 +329,22 @@
           let text = result.format('MM/DD(ddd)')
           let textmiddle = result.format('ddd')
           let value = result.format('YYYY-MM-DD')
+          let holiday = holiday_jp.isHoliday(value)
+          let holiday_name = ''
           let hash = ''
+
+          if (holiday){
+            holiday_name = holiday_jp.between(new Date(value), new Date(value))[0]['name']
+          }
+
           if(value == moment().format("YYYY-MM-DD")){
-            hash = {text: text, value: value, tc: 'teal lighten-5'}
+            hash = {text: text, value: value, tc: 'teal lighten-5', holiday: holiday, holiday_name: holiday_name}
           } else if(textmiddle == '土'){
-            hash = {text: text, value: value, tc: 'blue lighten-5'}
+            hash = {text: text, value: value, tc: 'blue lighten-5', holiday: holiday, holiday_name: holiday_name}
           } else if(textmiddle == '日'){
-            hash = {text: text, value: value, tc: 'red lighten-5'}
+            hash = {text: text, value: value, tc: 'red lighten-5', holiday: holiday, holiday_name: holiday_name}
           } else {
-            hash = {text: text, value: value}
+            hash = {text: text, value: value, holiday: holiday, holiday_name: holiday_name}
           }
           dates.push(hash)
         }
