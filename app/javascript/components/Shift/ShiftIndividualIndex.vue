@@ -95,25 +95,26 @@
               <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
               <td
                 v-if="date.holiday"
+                class="text-no-wrap"
               >祝日</td>
               <td
                 v-else
               ></td>
               <td 
-                class="text-center"
+                class="text-no-wrap"
                 v-if="filterShiftName(date.value).length < 2"
               >{{ filterShiftName(date.value)[0] }}</td>
               <td 
-                class="text-center"
+                class="text-no-wrap"
                 v-else
               >※</td>
               <td 
                 v-if="filterShiftPhase(date.value).length < 2"
-                class="text-center"
+                class="text-no-wrap"
               >{{ filterShiftPhase(date.value)[0] }}</td>
               <td 
                 v-else
-                class="text-center"
+                class="text-no-wrap"
               >※</td>
               <td 
                 v-if="filterShiftSTime(date.value).length < 2"
@@ -133,11 +134,11 @@
                 >※</td>
               <td 
                 v-if="filterShiftRemarks(date.value).length < 2"
-                class="text-center"
+                class="text-no-wrap"
               >{{ filterShiftRemarks(date.value)[0] }}</td>
               <td 
                 v-else
-                class="text-center"
+                class="text-no-wrap"
               >※</td>
               <td></td>
             </tr>
