@@ -57,15 +57,15 @@
             <v-row class="ma-0" justify="center">
               <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">出勤日数</div>
-                <div class="text-h6 font-weight-bold">17.5 日</div>
+                <div class="text-h6 font-weight-bold">{{ countWorkDays() }} 日</div>
               </v-col>
               <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">公休日数</div>
-                <div class="text-h6 font-weight-bold">10 日</div>
+                <div class="text-h6 font-weight-bold">{{ countHolidays() }} 日</div>
               </v-col>
               <v-col class="pa-0 mx-3" cols="3">
                 <div class="text-subtitle-2">有休等日数</div>
-                <div class="text-h6 font-weight-bold">3.5 日</div>
+                <div class="text-h6 font-weight-bold">{{ countPaidHolidays() }} 日</div>
               </v-col>
             </v-row>
           </v-card>
@@ -234,6 +234,45 @@
         .catch(error => console.log(error))
     },
     methods: {
+      countWorkDays(){
+        let start_day = moment(this.selectMonth.slice(0,5)).year(this.selectYear).format('YYYY-MM-DD')
+        let end_day = moment(this.selectMonth.slice(-5)).year(this.selectYear).format('YYYY-MM-DD')
+        let workdays = 0
+        this.shifts.forEach(shift => {
+          if(shift.date >= start_day && shift.date <= end_day){
+            if(shift.pattern.pattern_type == '出勤日'){
+              workdays += 1
+            }
+          }
+        })
+        return workdays
+      },
+      countHolidays(){
+        let start_day = moment(this.selectMonth.slice(0,5)).year(this.selectYear).format('YYYY-MM-DD')
+        let end_day = moment(this.selectMonth.slice(-5)).year(this.selectYear).format('YYYY-MM-DD')
+        let holidays = 0
+        this.shifts.forEach(shift => {
+          if(shift.date >= start_day && shift.date <= end_day){
+            if(shift.pattern.pattern_type == '休日'){
+              holidays += 1
+            }
+          }
+        })
+        return holidays
+      },
+      countPaidHolidays(){
+        let start_day = moment(this.selectMonth.slice(0,5)).year(this.selectYear).format('YYYY-MM-DD')
+        let end_day = moment(this.selectMonth.slice(-5)).year(this.selectYear).format('YYYY-MM-DD')
+        let paid_holidays = 0
+        this.shifts.forEach(shift => {
+          if(shift.date >= start_day && shift.date <= end_day){
+            if(shift.pattern.pattern_type == '有休等'){
+              paid_holidays += 1
+            }
+          }
+        })
+        return paid_holidays
+      },
       filterShiftName(key) {
         let filterd = [];
         this.shifts.forEach(shift => {
