@@ -93,10 +93,17 @@
               height="50px"
             >
               <td class="grey--text text--darken-1" :class="date.tc">{{ date.text }}</td>
-              <td
-                v-if="date.holiday"
-                class="text-no-wrap"
-              >祝日</td>
+              <v-tooltip top v-if="date.holiday">
+                <template v-slot:activator="{ on, attrs }">
+                  <td
+                    v-bind="attrs"
+                    v-on="on"
+                    class="text-no-wrap"
+                  >祝日</td>
+                </template>
+                <span>{{ date.holiday_name }}</span>
+              </v-tooltip>
+              
               <td
                 v-else
               ></td>
