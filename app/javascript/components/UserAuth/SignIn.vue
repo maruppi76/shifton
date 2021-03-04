@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-card width="400px" class="mx-auto my-auto rounded-lg topborder">
+    <v-card class="mx-lg-auto mx-sm-auto mx-md-auto mx-5 my-auto rounded-lg topborder SignInWrapper">
       <v-card-title class="mt-16">
         <v-img
           :src="login_top_image"
@@ -26,7 +26,7 @@
         <v-btn 
           rounded
           class="info mx-auto"
-          width="300px"
+          width="100%"
           @click="submitForm"
         >
           ログイン
@@ -71,6 +71,12 @@
 <style>
   .topborder {
     border-top: 5px solid #b3e5fc !important;
+  }
+
+  @media screen and (min-width:768px) {
+    .SignInWrapper {
+      width: 400px;
+    }
   }
 
 </style>
