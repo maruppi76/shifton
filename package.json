@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.8.3",
     "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
     "regenerator-runtime": "^0.13.7",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.6",
@@ -24,7 +25,7 @@
   "devDependencies": {
     "deepmerge": "^4.2.2",
     "sass": "^1.32.6",
-    "sass-loader": "^10.1.1",
+    "sass-loader": "^11.0.1",
     "webpack-dev-server": "^3.11.2"
   }
 }
