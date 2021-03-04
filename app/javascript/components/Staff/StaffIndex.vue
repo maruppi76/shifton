@@ -5,6 +5,9 @@
         class="blue-grey lighten-5"
       >スタッフ一覧</v-card-title>
     </v-card>
+    <v-card elevation="0" class="rounded-0">
+      <v-card-title>スタッフ： {{ users.length }}名</v-card-title>
+    </v-card>
     <v-row class="ma-0 align-content-start">
       <v-col cols="4" lg="1" v-for="user in users" :key="user.id">
         <v-card
