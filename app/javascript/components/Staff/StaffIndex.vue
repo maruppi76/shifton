@@ -6,7 +6,7 @@
       >スタッフ一覧</v-card-title>
     </v-card>
     <v-row class="ma-0 align-content-start">
-      <v-col cols="4" lg="1" v-for="n in 20" :key="n">
+      <v-col cols="4" lg="1" v-for="user in users" :key="user.id">
         <v-card
           elevation="0"
           tile
@@ -18,7 +18,7 @@
             src="http://placehold.jp/c2c2c2/ffffff/200x200.png?text=No%20Image"
           ></v-img>
           <div class="text-center my-3">
-            山田 太郎
+            {{ user.full_name }}
           </div>
         </v-card>
       </v-col>
