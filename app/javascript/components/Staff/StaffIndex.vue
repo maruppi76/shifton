@@ -17,10 +17,10 @@
             width="200px"
             src="http://placehold.jp/c2c2c2/ffffff/200x200.png?text=No%20Image"
           ></v-img>
-          <div class="text-center mt-3">
+          <div class="text-center text-subtitle-2 mt-3">
             {{ user.full_name }}
           </div>
-          <div class="text-center mb-3">
+          <div class="text-center text-caption mb-3">
             {{ user.staff_code }}
           </div>
         </v-card>
