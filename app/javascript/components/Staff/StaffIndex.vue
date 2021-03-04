@@ -6,7 +6,7 @@
       >スタッフ一覧</v-card-title>
     </v-card>
     <v-row class="ma-0 align-content-start">
-      <v-col cols="1" v-for="n in 20" :key="n">
+      <v-col cols="4" lg="1" v-for="n in 20" :key="n">
         <v-card
           elevation="0"
           tile
