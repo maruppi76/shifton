@@ -25,3 +25,21 @@
     </v-row>
   </v-app>
 </template>
+
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      users: '',
+    }
+  },
+  mounted() {
+    axios.get('/api/users/all_users.json')
+      .then(response => {
+        this.users = response.data
+        console.log(this.users)
+      })
+  }
+}
+</script>
