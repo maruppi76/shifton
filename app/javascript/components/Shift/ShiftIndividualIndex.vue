@@ -367,14 +367,13 @@
   }
 </script>
 
-<style lang="scss">
-.ShiftViewTable {
-  th, td{
-    border-right: thin solid #F5F5F5;
-
-    &:last-child{
-      border-right: none;
-    }
-  }
+<style>
+.ShiftViewTable__Header > tr > th,
+.ShiftViewTable__Body > tr > td{
+  border-right: thin solid #F5F5F5;
+}
+.ShiftViewTable__Header > th:last-child,
+.ShiftViewTable__Body > td:last-child{
+  border-right: none;
 }
 </style>
