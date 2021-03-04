@@ -5,7 +5,6 @@ import axios from 'axios';
 import SignIn from './components/UserAuth/SignIn'
 import Home from './components/Home'
 import AccountIndex from './components/Account/AccountIndex'
-import ShiftIndividualIndexOld from './components/Shift/ShiftIndividualIndexOld'
 import ShiftIndividualIndex from './components/Shift/ShiftIndividualIndex'
 import ShiftDepartmentIndex from './components/Shift/ShiftDepartmentIndex'
 import ShiftIndex from './components/Shift/ShiftIndex'
@@ -29,10 +28,6 @@ const router = new Router({
         {
           path: '/',
           component: AccountIndex
-        },
-        {
-          path: '/shifts/me_old',
-          component: ShiftIndividualIndexOld
         },
         {
           path: '/shifts/me',
