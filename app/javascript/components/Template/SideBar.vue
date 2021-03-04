@@ -69,14 +69,47 @@
         </v-list-item>
         <div v-if="user.role == '全権管理者'">
           <v-subheader>全権管理者メニュー</v-subheader>
-          <v-list-item v-for="admin_list in admin_lists" :key="admin_list.name" :to="admin_list.link">
+          <template v-for="admin_list in admin_lists">
+            <v-list-item
+                v-if="!admin_list.lists" 
+                :to="admin_list.link"
+                :key="admin_list.name"
+                @click="menu_close"
+            >
             <v-list-item-icon>
               <v-icon>{{ admin_list.icon }}</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>{{ admin_list.name }}</v-list-item-title>
+              <v-list-item-title>
+                {{ admin_list.name }}
+              </v-list-item-title>
             </v-list-item-content>
-          </v-list-item>
+            </v-list-item>
+            <v-list-group
+                v-else
+                no-action
+                :prepend-icon="admin_list.icon"
+                :key="admin_list.name"
+                v-model="admin_list.active"
+            >
+              <template v-slot:activator>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      {{ admin_list.name }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+              </template>
+              <v-list-item
+                  v-for="list in admin_list.lists"
+                  :key="list.name"
+                  :to="list.link"
+              >
+                <v-list-item-title>
+                  {{ list.name }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list-group>
+          </template>
         </div>
       </div>
       <v-subheader>設定</v-subheader>
@@ -129,7 +162,12 @@
           {
             name: 'スタッフ管理',
             icon: 'mdi-account-multiple',
-            link: '/staff_management',
+            lists: [
+              {
+                name: 'スタッフ一覧',
+                link: '/staff_management',
+              },
+            ]
           },
         ],
         setting_lists: [
