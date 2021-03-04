@@ -169,7 +169,7 @@
               },
               {
                 name: 'スタッフ一覧(新)',
-                link: '/staff_management',
+                link: '/staff',
               },
             ]
           },
