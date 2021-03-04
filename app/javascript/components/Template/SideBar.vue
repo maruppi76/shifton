@@ -164,7 +164,11 @@
             icon: 'mdi-account-multiple',
             lists: [
               {
-                name: 'スタッフ一覧',
+                name: 'スタッフ一覧(旧)',
+                link: '/staff_managementold',
+              },
+              {
+                name: 'スタッフ一覧(新)',
                 link: '/staff_management',
               },
             ]
