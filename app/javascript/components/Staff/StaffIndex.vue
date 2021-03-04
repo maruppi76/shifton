@@ -15,7 +15,7 @@
             class="rounded-circle"
             :aspect-ratio="1/1"
             width="200px"
-            src="https://picsum.photos/id/11/500/300"
+            src="http://placehold.jp/c2c2c2/ffffff/200x200.png?text=No%20Image"
           ></v-img>
           <div class="text-center my-3">
             山田 太郎
