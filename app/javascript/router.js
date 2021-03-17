@@ -9,6 +9,7 @@ import ShiftIndividualIndex from './components/Shift/ShiftIndividualIndex'
 import ShiftDepartmentIndex from './components/Shift/ShiftDepartmentIndex'
 import ShiftIndex from './components/Shift/ShiftIndex'
 import StaffIndex from './components/Staff/StaffIndex'
+import StaffDetail from './components/Staff/StaffDetail'
 import StaffManagementOld from './components/Staff/StaffManagementOld'
 import CreateShift from './components/Shift/CreateShift'
 
@@ -45,6 +46,10 @@ const router = new Router({
         {
           path: '/staff',
           component: StaffIndex
+        },
+        {
+          path: '/staff/:id',
+          component: StaffDetail
         },
         {
           path: '/staff_managementold',
