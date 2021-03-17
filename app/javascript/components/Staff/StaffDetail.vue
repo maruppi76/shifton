@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="grey lighten-4">
     <v-card elevation="0" class="rounded-0">
       <v-card-title
         class="blue-grey lighten-5"
