@@ -31,7 +31,11 @@
             </v-row>
           </v-col>
           <v-col cols="8">
-            hogehoge
+            <v-row justify="end" align-content="center" class="mr-2 mt-2">
+              <v-icon>
+                mdi-account-edit
+              </v-icon>
+            </v-row>
           </v-col>
         </v-row>
       </v-card>
