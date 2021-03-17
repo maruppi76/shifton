@@ -5,11 +5,10 @@
         class="blue-grey lighten-5"
       >{{ this.user.full_name }}</v-card-title>
     </v-card>
-    <v-container>
       <v-card
         elevation="1"
         tile
-        class="pa-5"
+        class="pa-5 ma-5"
       >
         <v-row>
           <v-col cols="4">
@@ -104,9 +103,7 @@
             </v-row>
           </v-col>
         </v-row>
-      </v-card>
-    </v-container>
-    
+      </v-card>    
   </v-app>
 </template>
 
