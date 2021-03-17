@@ -5,6 +5,15 @@
         class="blue-grey lighten-5"
       >{{ this.user.full_name }}</v-card-title>
     </v-card>
+    <v-container>
+      <v-card
+        elevation="1"
+        tile
+      >
+        hogehoge
+      </v-card>
+    </v-container>
+    
   </v-app>
 </template>
 
