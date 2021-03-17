@@ -11,7 +11,14 @@
         tile
         class="pa-5"
       >
-        hogehoge
+        <v-row>
+          <v-col cols="5">
+            hogehoge
+          </v-col>
+          <v-col cols="7">
+            hogehoge
+          </v-col>
+        </v-row>
       </v-card>
     </v-container>
     
