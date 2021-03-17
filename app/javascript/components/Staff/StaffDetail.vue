@@ -9,13 +9,21 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   props: {id: Number},
 
   data() {
     return{
-
+      user: '',
     }
   },
+  mounted() {
+    axios.get(`/api/users/${this.id}.json`)
+      .then(response => {
+        this.user = response.data
+        console.log(this.user)
+      })
+  }
 }
 </script>
