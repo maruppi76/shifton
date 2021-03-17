@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   get '/shifts/all',  to: 'home#index'
   get '/shift_preferred',  to: 'home#index'
   get '/staff_management',  to: 'home#index'
+  get '/staff',  to: 'home#index'
   get '/shifts/create',  to: 'home#index'
 end

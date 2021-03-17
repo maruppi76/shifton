@@ -8,7 +8,8 @@ import AccountIndex from './components/Account/AccountIndex'
 import ShiftIndividualIndex from './components/Shift/ShiftIndividualIndex'
 import ShiftDepartmentIndex from './components/Shift/ShiftDepartmentIndex'
 import ShiftIndex from './components/Shift/ShiftIndex'
-import StaffManagement from './components/Staff/StaffManagement'
+import StaffIndex from './components/Staff/StaffIndex'
+import StaffManagementOld from './components/Staff/StaffManagementOld'
 import CreateShift from './components/Shift/CreateShift'
 
 Vue.use(Router)
@@ -42,8 +43,12 @@ const router = new Router({
           component: ShiftIndex
         },
         {
-          path: '/staff_management',
-          component: StaffManagement
+          path: '/staff',
+          component: StaffIndex
+        },
+        {
+          path: '/staff_managementold',
+          component: StaffManagementOld
         },
         {
           path: '/shifts/create',
