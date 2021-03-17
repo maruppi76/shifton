@@ -53,6 +53,22 @@
                   </v-row>
                 </v-card>
               </v-col>
+              <v-col cols="6">
+                <v-card
+                  class="pa-2 StaffDetailBB"
+                  elevation="0"
+                  tile
+                >
+                  <v-row>
+                    <v-col cols="5" class="grey--text text--lighten-1">
+                      登録日
+                    </v-col>
+                    <v-col cols="7">
+                      {{  }}
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
             </v-row>
           </v-col>
         </v-row>
