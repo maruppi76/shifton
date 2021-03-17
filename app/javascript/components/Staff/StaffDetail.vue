@@ -15,7 +15,10 @@
           <v-col cols="5">
             <v-row>
               <v-col cols="7" class="mt-10">
-                hoge
+                <p class="text-subtitle-1 mb-0">{{ this.user.first_name_kana }} {{ this.user.last_name_kana }}</p>
+                <h1 class="mb-3">{{ this.user.full_name }}</h1>
+                <p>{{ this.user.department_main.str }}</p>
+                <p>{{ this.user.email }}</p>
               </v-col>
               <v-col cols="5">
                 <v-img
