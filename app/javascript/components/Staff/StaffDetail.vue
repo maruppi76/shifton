@@ -69,6 +69,22 @@
                   </v-row>
                 </v-card>
               </v-col>
+              <v-col cols="12">
+                <v-card
+                  class="pa-2 StaffDetailBB"
+                  elevation="0"
+                  tile
+                >
+                  <v-row>
+                    <v-col cols="2" class="grey--text text--lighten-1">
+                      所属部署(メイン)
+                    </v-col>
+                    <v-col cols="10">
+                      {{ this.user.department_main.str }}
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
             </v-row>
           </v-col>
         </v-row>
