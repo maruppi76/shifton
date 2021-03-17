@@ -43,7 +43,7 @@
                   tile
                 >
                   <v-row>
-                    <v-col cols="4" class="grey--text text--lighten-1">
+                    <v-col cols="4" class="grey--text text--lighten-1 text-caption">
                       スタッフコード
                     </v-col>
                     <v-col cols="8">
@@ -59,11 +59,11 @@
                   tile
                 >
                   <v-row>
-                    <v-col cols="5" class="grey--text text--lighten-1">
+                    <v-col cols="5" class="grey--text text--lighten-1 text-caption">
                       登録日
                     </v-col>
                     <v-col cols="7">
-                      {{  }}
+                      データなし
                     </v-col>
                   </v-row>
                 </v-card>
@@ -75,7 +75,7 @@
                   tile
                 >
                   <v-row>
-                    <v-col cols="2" class="grey--text text--lighten-1">
+                    <v-col cols="2" class="grey--text text--lighten-1 text-caption">
                       所属部署(メイン)
                     </v-col>
                     <v-col cols="10">
@@ -91,7 +91,7 @@
                   tile
                 >
                   <v-row>
-                    <v-col cols="2" class="grey--text text--lighten-1">
+                    <v-col cols="2" class="grey--text text--lighten-1 text-caption">
                       所属部署(サブ)
                     </v-col>
                     <v-col cols="10">
