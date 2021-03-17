@@ -13,7 +13,19 @@
       >
         <v-row>
           <v-col cols="5">
-            hogehoge
+            <v-row>
+              <v-col cols="7" class="mt-10">
+                hoge
+              </v-col>
+              <v-col cols="5">
+                <v-img
+                  class="rounded-circle"
+                  :aspect-ratio="1/1"
+                  width="200px"
+                  src="http://placehold.jp/c2c2c2/ffffff/200x200.png?text=No%20Image"
+                ></v-img>
+              </v-col>
+            </v-row>
           </v-col>
           <v-col cols="7">
             hogehoge
