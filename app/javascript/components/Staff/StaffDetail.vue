@@ -9,6 +9,7 @@
       <v-card
         elevation="1"
         tile
+        class="pa-5"
       >
         hogehoge
       </v-card>
