@@ -35,7 +35,7 @@
           class="text-center text-caption"
           cols="12"
         >
-          &copy; copyright {{ new Date().getFullYear() }} - <strong>shifton</strong>
+          &copy; 2020 - {{ new Date().getFullYear() }} <strong>GRATI</strong>
         </v-col>
       </v-footer>
     </v-main>
