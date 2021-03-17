@@ -37,7 +37,22 @@
               </v-icon>
             </v-row>
             <v-row>
-              
+              <v-col cols="6">
+                <v-card
+                  class="pa-2 StaffDetailBB"
+                  elevation="0"
+                  tile
+                >
+                  <v-row>
+                    <v-col cols="4" class="grey--text text--lighten-1">
+                      スタッフコード
+                    </v-col>
+                    <v-col cols="8">
+                      {{ this.user.staff_code }}
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
             </v-row>
           </v-col>
         </v-row>
