@@ -36,6 +36,9 @@
                 mdi-account-edit
               </v-icon>
             </v-row>
+            <v-row>
+              
+            </v-row>
           </v-col>
         </v-row>
       </v-card>
@@ -63,3 +66,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.StaffDetailBB {
+  border-bottom: 1px solid #E0E0E0 !important;
+}
+</style>
