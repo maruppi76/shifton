@@ -13,6 +13,7 @@
         <v-card
           elevation="0"
           tile
+          :to="`/staff/${user.id}`"
         >
           <v-img
             class="rounded-circle"
