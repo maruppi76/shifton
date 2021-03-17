@@ -12,7 +12,7 @@
         class="pa-5"
       >
         <v-row>
-          <v-col cols="5">
+          <v-col cols="4">
             <v-row>
               <v-col cols="7" class="mt-10">
                 <p class="text-subtitle-1 mb-0">{{ this.user.first_name_kana }} {{ this.user.last_name_kana }}</p>
@@ -30,7 +30,7 @@
               </v-col>
             </v-row>
           </v-col>
-          <v-col cols="7">
+          <v-col cols="8">
             hogehoge
           </v-col>
         </v-row>
