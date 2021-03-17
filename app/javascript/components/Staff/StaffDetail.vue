@@ -7,3 +7,9 @@
     </v-card>
   </v-app>
 </template>
+
+<script>
+export default {
+  props: {id: Number}
+}
+</script>

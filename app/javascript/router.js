@@ -49,7 +49,8 @@ const router = new Router({
         },
         {
           path: '/staff/:id',
-          component: StaffDetail
+          component: StaffDetail,
+          props: route => ({id: Number(route.params.id)})
         },
         {
           path: '/staff_managementold',
