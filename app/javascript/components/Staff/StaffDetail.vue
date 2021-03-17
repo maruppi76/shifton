@@ -10,6 +10,12 @@
 
 <script>
 export default {
-  props: {id: Number}
+  props: {id: Number},
+
+  data() {
+    return{
+
+    }
+  },
 }
 </script>
