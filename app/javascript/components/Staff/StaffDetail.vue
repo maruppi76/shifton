@@ -1,5 +1,5 @@
 <template>
-  <v-app class="grey lighten-5">
+  <v-app class="grey lighten-5" v-if="this.user">
     <v-card elevation="0" class="rounded-0">
       <v-card-title
         class="blue-grey lighten-5"
@@ -37,68 +37,52 @@
             </v-row>
             <v-row>
               <v-col cols="6">
-                <v-card
-                  class="pa-2 StaffDetailBB"
-                  elevation="0"
-                  tile
-                >
-                  <v-row>
-                    <v-col cols="4" class="grey--text text--lighten-1 text-caption">
-                      スタッフコード
-                    </v-col>
-                    <v-col cols="8">
-                      {{ this.user.staff_code }}
-                    </v-col>
-                  </v-row>
-                </v-card>
+                <v-row>
+                  <v-col cols="4" class="grey--text text--lighten-1 text-caption">
+                    <v-subheader>スタッフコード</v-subheader>
+                  </v-col>
+                  <v-col cols="8">
+                    <v-subheader
+                      class="StaffDetailBB"
+                    >{{ this.user.staff_code }}</v-subheader>
+                  </v-col>
+                </v-row>
               </v-col>
               <v-col cols="6">
-                <v-card
-                  class="pa-2 StaffDetailBB"
-                  elevation="0"
-                  tile
-                >
-                  <v-row>
-                    <v-col cols="5" class="grey--text text--lighten-1 text-caption">
-                      登録日
-                    </v-col>
-                    <v-col cols="7">
-                      データなし
-                    </v-col>
-                  </v-row>
-                </v-card>
+                <v-row>
+                  <v-col cols="4" class="grey--text text--lighten-1 text-caption">
+                    <v-subheader>登録日</v-subheader>
+                  </v-col>
+                  <v-col cols="8">
+                    <v-subheader
+                      class="StaffDetailBB"
+                    >データなし</v-subheader>
+                  </v-col>
+                </v-row>
               </v-col>
               <v-col cols="12">
-                <v-card
-                  class="pa-2 StaffDetailBB"
-                  elevation="0"
-                  tile
-                >
-                  <v-row>
-                    <v-col cols="2" class="grey--text text--lighten-1 text-caption">
-                      所属部署(メイン)
-                    </v-col>
-                    <v-col cols="10">
-                      {{ this.user.department_main.str }}
-                    </v-col>
-                  </v-row>
-                </v-card>
+                <v-row>
+                  <v-col cols="2" class="grey--text text--lighten-1 text-caption">
+                    <v-subheader>所属部署(メイン)</v-subheader>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-subheader
+                      class="StaffDetailBB"
+                    >{{ this.user.department_main.str }}</v-subheader>
+                  </v-col>
+                </v-row>
               </v-col>
               <v-col cols="12">
-                <v-card
-                  class="pa-2 StaffDetailBB"
-                  elevation="0"
-                  tile
-                >
-                  <v-row>
-                    <v-col cols="2" class="grey--text text--lighten-1 text-caption">
-                      所属部署(サブ)
-                    </v-col>
-                    <v-col cols="10">
-                      {{ this.user.department_sub }}
-                    </v-col>
-                  </v-row>
-                </v-card>
+                <v-row>
+                  <v-col cols="2" class="grey--text text--lighten-1 text-caption">
+                    <v-subheader>所属部署(サブ)</v-subheader>
+                  </v-col>
+                  <v-col cols="10">
+                    <v-subheader
+                      class="StaffDetailBB"
+                    >{{ this.user.department_sub }}</v-subheader>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
           </v-col>
