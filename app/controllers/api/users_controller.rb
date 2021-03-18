@@ -1,5 +1,10 @@
 class Api::UsersController < ApplicationController
 
+  def show
+    @user = User.find(params[:id])
+    render json: @user, serializer: UserSerializer
+  end
+
   def all_users
     @users = User.all
     render json: @users, each_serializer: UserSerializer
