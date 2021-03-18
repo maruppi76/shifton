@@ -51,11 +51,16 @@
               <v-col cols="6">
                 <v-row>
                   <v-col cols="4" class="grey--text text--lighten-1 text-caption">
-                    <v-subheader>登録日</v-subheader>
+                    <v-subheader>入社日</v-subheader>
                   </v-col>
                   <v-col cols="8">
                     <v-subheader
                       class="StaffDetailBB"
+                      v-if="this.user.joining_date"
+                    >{{ this.user.joining_date }}</v-subheader>
+                    <v-subheader
+                      class="StaffDetailBB"
+                      v-else
                     >データなし</v-subheader>
                   </v-col>
                 </v-row>
@@ -80,7 +85,12 @@
                   <v-col cols="10">
                     <v-subheader
                       class="StaffDetailBB"
-                    >{{ this.user.department_sub }}</v-subheader>
+                      v-if="this.user.department_sub"
+                    >{{ this.user.department_sub.str }}</v-subheader>
+                    <v-subheader
+                      class="StaffDetailBB"
+                      v-else
+                    >データなし</v-subheader>
                   </v-col>
                 </v-row>
               </v-col>
