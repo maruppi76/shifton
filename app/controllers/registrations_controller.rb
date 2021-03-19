@@ -61,6 +61,7 @@ class RegistrationsController < Devise::RegistrationsController
                                  :department_main_id,
                                  :department_sub_id,
                                  :role,
-                                 :admin)
+                                 :admin,
+                                 :avatar)
     end
 end
