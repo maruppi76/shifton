@@ -9,7 +9,7 @@
           <v-row align="end">
             <v-col cols="4">
               <v-img
-                class="rounded-circle"
+                class="rounded-circle mx-auto"
                 :aspect-ratio="1/1"
                 width="150px"
                 src="http://placehold.jp/c2c2c2/ffffff/200x200.png?text=No%20Image"
