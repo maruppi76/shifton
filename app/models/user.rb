@@ -30,4 +30,5 @@ class User < ApplicationRecord
   belongs_to :department_main, class_name: "Department"
   belongs_to :department_sub, class_name: "Department", optional: true
   has_many :shifts
+  has_one_attached :avatar
 end
