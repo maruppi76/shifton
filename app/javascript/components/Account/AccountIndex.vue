@@ -32,7 +32,6 @@
                   hoho
                 </v-card>
               </v-dialog>
-              
             </v-col>
           </v-row>
         </v-col>
