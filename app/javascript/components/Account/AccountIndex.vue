@@ -19,7 +19,7 @@
               <v-btn
                 class="light-blue lighten-4 white--text"
                 elevation="1"
-              >アバターを設定する</v-btn>
+              >プロフィール画像を設定する</v-btn>
             </v-col>
           </v-row>
         </v-col>
