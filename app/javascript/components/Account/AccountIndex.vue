@@ -16,10 +16,23 @@
               ></v-img>
             </v-col>
             <v-col cols="8">
-              <v-btn
-                class="light-blue lighten-4 white--text"
-                elevation="1"
-              >プロフィール画像を設定する</v-btn>
+              <v-dialog
+                v-model="dialog"
+                width="500"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    class="light-blue lighten-4 white--text"
+                    elevation="1"
+                    v-bind="attrs"
+                    v-on="on"
+                  >プロフィール画像を設定する</v-btn>
+                </template>
+                <v-card>
+                  hoho
+                </v-card>
+              </v-dialog>
+              
             </v-col>
           </v-row>
         </v-col>
