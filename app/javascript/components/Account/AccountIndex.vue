@@ -29,7 +29,7 @@
                   >プロフィール画像を設定する</v-btn>
                 </template>
                 <v-card>
-                  hoho
+                  hogehoge
                 </v-card>
               </v-dialog>
             </v-col>
