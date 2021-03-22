@@ -32,6 +32,13 @@
                   <v-card-title>
                     プロフィール画像設定
                   </v-card-title>
+                  <v-card-text>
+                    <v-file-input
+                      counter
+                      show-size
+                      truncate-length="50"
+                    ></v-file-input>
+                  </v-card-text>
                 </v-card>
               </v-dialog>
             </v-col>
