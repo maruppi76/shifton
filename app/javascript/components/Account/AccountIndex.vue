@@ -37,6 +37,7 @@
                       counter
                       show-size
                       truncate-length="50"
+                      v-model="imageFile"
                     ></v-file-input>
                   </v-card-text>
                   <v-card-actions>
@@ -44,7 +45,7 @@
                     <v-btn
                       color="primary"
                       text
-                      @click="dialog = false"
+                      @click="updateAvatar(user)"
                     >
                       決定
                     </v-btn>
@@ -117,7 +118,14 @@
     props:['user'],
     data() {
       return {
-        dialog: false
+        dialog: false,
+        imageFile: null,
+      }
+    },
+    methods: {
+      updateAvatar(user) {
+        console.log(user)
+        console.log(this.imageFile)
       }
     }
   }
