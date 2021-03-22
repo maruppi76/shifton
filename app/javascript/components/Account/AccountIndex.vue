@@ -39,6 +39,16 @@
                       truncate-length="50"
                     ></v-file-input>
                   </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="primary"
+                      text
+                      @click="dialog = false"
+                    >
+                      決定
+                    </v-btn>
+                  </v-card-actions>
                 </v-card>
               </v-dialog>
             </v-col>
@@ -104,7 +114,12 @@
 
 <script>
   export default {
-    props:['user']
+    props:['user'],
+    data() {
+      return {
+        dialog: false
+      }
+    }
   }
 </script>
 
