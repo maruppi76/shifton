@@ -29,7 +29,9 @@
                   >プロフィール画像を設定する</v-btn>
                 </template>
                 <v-card>
-                  hogehoge
+                  <v-card-title>
+                    プロフィール画像設定
+                  </v-card-title>
                 </v-card>
               </v-dialog>
             </v-col>
