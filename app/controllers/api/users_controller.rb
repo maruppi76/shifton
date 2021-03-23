@@ -5,6 +5,9 @@ class Api::UsersController < ApplicationController
     render json: @user, serializer: UserSerializer
   end
 
+  def update
+  end
+
   def all_users
     @users = User.all
     render json: @users, each_serializer: UserSerializer
