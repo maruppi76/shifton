@@ -5,6 +5,56 @@
     </section>
     <v-container>
       <v-row justify="center" class="mx-lg-16">
+        <v-col cols="12" lg="10" class="AvatarSetting">
+          <v-row align="end">
+            <v-col cols="4">
+              <v-img
+                class="rounded-circle mx-auto"
+                :aspect-ratio="1/1"
+                width="150px"
+                src="http://placehold.jp/c2c2c2/ffffff/200x200.png?text=No%20Image"
+              ></v-img>
+            </v-col>
+            <v-col cols="8">
+              <v-dialog
+                v-model="dialog"
+                width="600"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    class="light-blue lighten-4 white--text"
+                    elevation="1"
+                    v-bind="attrs"
+                    v-on="on"
+                  >プロフィール画像を設定する</v-btn>
+                </template>
+                <v-card>
+                  <v-card-title>
+                    プロフィール画像設定
+                  </v-card-title>
+                  <v-card-text>
+                    <v-file-input
+                      counter
+                      show-size
+                      truncate-length="50"
+                      v-model="imageFile"
+                    ></v-file-input>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="primary"
+                      text
+                      @click="updateAvatar(user)"
+                    >
+                      決定
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </v-col>
+          </v-row>
+        </v-col>
         <v-col cols="12" lg="10">
           <div class="BoxHeader text-body-1">
             アカウント
@@ -65,7 +115,19 @@
 
 <script>
   export default {
-    props:['user']
+    props:['user'],
+    data() {
+      return {
+        dialog: false,
+        imageFile: null,
+      }
+    },
+    methods: {
+      updateAvatar(user) {
+        console.log(user)
+        console.log(this.imageFile)
+      }
+    }
   }
 </script>
 
@@ -141,6 +203,10 @@ table {
 
   .mobile-text {
     display: revert;
+  }
+
+  .AvatarSetting {
+    display: none;
   }
 }
 </style>
