@@ -114,6 +114,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   import CsrfToken from '../../mixins/csrf'
   export default {
     props:['user'],
