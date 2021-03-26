@@ -5,7 +5,10 @@ class Api::UsersController < ApplicationController
     render json: @user, serializer: UserSerializer
   end
 
-
+  def avatar
+    binding.pry
+  end
+  
   def all_users
     @users = User.all
     render json: @users, each_serializer: UserSerializer
