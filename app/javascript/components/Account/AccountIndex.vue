@@ -114,6 +114,7 @@
 </template>
 
 <script>
+  import CsrfToken from '../../mixins/csrf'
   export default {
     props:['user'],
     data() {
@@ -127,7 +128,10 @@
         console.log(user)
         console.log(this.imageFile)
       }
-    }
+    },
+    mixins:[
+      CsrfToken,
+    ]
   }
 </script>
 
