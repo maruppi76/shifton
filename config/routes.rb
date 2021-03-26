@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   namespace :api, {format: 'json'} do
-    resources :users, only:[:show] do
+    resources :users, only:[:show, :update] do
       collection do
         get "all_users"
         get "login_check"
