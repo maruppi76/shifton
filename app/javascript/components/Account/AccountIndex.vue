@@ -26,7 +26,9 @@
                     elevation="1"
                     v-bind="attrs"
                     v-on="on"
-                  >プロフィール画像を設定する</v-btn>
+                  >
+                    プロフィール画像を設定する
+                  </v-btn>
                 </template>
                 <v-card>
                   <v-card-title>
