@@ -20,7 +20,7 @@
             <v-col cols="8">
               <v-dialog
                 v-model="dialog"
-                width="600"
+                width="610"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
