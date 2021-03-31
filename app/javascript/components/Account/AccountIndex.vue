@@ -1,7 +1,9 @@
 <template>
   <div>
     <section>
-      <div class="text-center text-lg-h4 mt-10 mb-10">アカウント情報</div>
+      <div class="text-center text-lg-h4 mt-10 mb-10">
+        アカウント情報
+      </div>
     </section>
     <v-container>
       <v-row justify="center" class="mx-lg-16">
@@ -18,7 +20,7 @@
             <v-col cols="8">
               <v-dialog
                 v-model="dialog"
-                width="600"
+                width="610"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
@@ -26,7 +28,9 @@
                     elevation="1"
                     v-bind="attrs"
                     v-on="on"
-                  >プロフィール画像を設定する</v-btn>
+                  >
+                    プロフィール画像を設定する
+                  </v-btn>
                 </template>
                 <v-card>
                   <v-card-title>
@@ -114,6 +118,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+  import CsrfToken from '../../mixins/csrf'
   export default {
     props:['user'],
     data() {
@@ -127,7 +133,10 @@
         console.log(user)
         console.log(this.imageFile)
       }
-    }
+    },
+    mixins:[
+      CsrfToken,
+    ]
   }
 </script>
 

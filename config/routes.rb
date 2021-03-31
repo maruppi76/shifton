@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api, {format: 'json'} do
     resources :users, only:[:show] do
       collection do
+        post "avatar"
         get "all_users"
         get "login_check"
         get "user_detail"
