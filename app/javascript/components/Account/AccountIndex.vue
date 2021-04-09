@@ -18,7 +18,7 @@
               ></v-img>
             </v-col>
             <v-col cols="8">
-              <v-dialog
+              <!-- <v-dialog
                 v-model="dialog"
                 width="610"
               >
@@ -55,7 +55,7 @@
                     </v-btn>
                   </v-card-actions>
                 </v-card>
-              </v-dialog>
+              </v-dialog> -->
             </v-col>
           </v-row>
         </v-col>
