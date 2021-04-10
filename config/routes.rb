@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/shifts/me',  to: 'home#index'
   get '/shifts/me_old',  to: 'home#index'
   get '/shifts/department',  to: 'home#index'
+  get '/shifts/departmentold',  to: 'home#index'
   get '/shifts/all',  to: 'home#index'
   get '/shift_preferred',  to: 'home#index'
   get '/staff_management',  to: 'home#index'
