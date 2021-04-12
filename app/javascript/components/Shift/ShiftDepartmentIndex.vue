@@ -11,6 +11,26 @@
           {{ current_user.department_main.mobile }}
         </v-col>
       </v-row>
+      <v-row class="ma-0" align="centor">
+        <v-col cols="2">
+          <v-card
+            elevation="0"
+            tile>
+            One of three columns
+          </v-card>
+        </v-col>
+        <v-col cols="10">
+          <v-row class="ma-0" align="centor">
+            <v-card elevation="0" class="rounded-0">
+              <v-card-text class="pa-0">従業員名</v-card-text>
+              <v-card-text class="pa-0">従業員名</v-card-text>
+            </v-card>
+            <v-card elevation="0" class="rounded-0">
+              <v-card-text class="pa-0">従業員名</v-card-text>
+            </v-card>
+          </v-row>
+        </v-col>
+      </v-row>
     </v-card>
   </v-app>
 </template>
