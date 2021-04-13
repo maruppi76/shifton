@@ -13,23 +13,10 @@
       </v-row>
       <v-row class="ma-0" align="center">
         <v-col cols="2">
-          <v-card
-            elevation="0"
-            tile>
-            One of three columns
-          </v-card>
+          
         </v-col>
-        <v-col cols="10">
-          <v-row class="ma-0">
-            <v-card elevation="0" class="rounded-0">
-              <v-card-text class="pa-0 text-center">1</v-card-text>
-              <v-card-text class="pa-0 text-center">月</v-card-text>
-            </v-card>
-            <v-card elevation="0" class="rounded-0">
-              <v-card-text class="pa-0 text-center">2</v-card-text>
-              <v-card-text class="pa-0 text-center">火</v-card-text>
-            </v-card>
-          </v-row>
+        <v-col cols="10" class="fill-width">
+          
         </v-col>
       </v-row>
     </v-card>
@@ -53,3 +40,10 @@
     }
   }
 </script>
+
+<style>
+.fill-width {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+</style>
