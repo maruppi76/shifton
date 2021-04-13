@@ -11,7 +11,7 @@
           {{ current_user.department_main.mobile }}
         </v-col>
       </v-row>
-      <v-row class="ma-0" align="centor">
+      <v-row class="ma-0" align="center">
         <v-col cols="2">
           <v-card
             elevation="0"
@@ -20,13 +20,14 @@
           </v-card>
         </v-col>
         <v-col cols="10">
-          <v-row class="ma-0" align="centor">
+          <v-row class="ma-0">
             <v-card elevation="0" class="rounded-0">
-              <v-card-text class="pa-0">従業員名</v-card-text>
-              <v-card-text class="pa-0">従業員名</v-card-text>
+              <v-card-text class="pa-0 text-center">1</v-card-text>
+              <v-card-text class="pa-0 text-center">月</v-card-text>
             </v-card>
             <v-card elevation="0" class="rounded-0">
-              <v-card-text class="pa-0">従業員名</v-card-text>
+              <v-card-text class="pa-0 text-center">2</v-card-text>
+              <v-card-text class="pa-0 text-center">火</v-card-text>
             </v-card>
           </v-row>
         </v-col>
