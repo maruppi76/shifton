@@ -13,10 +13,22 @@
       </v-row>
       <v-row class="ma-0" align="center">
         <v-col cols="2">
-          
+          <table>
+            <thead>
+              <tr>
+                <th>スタッフ名</th>
+              </tr>
+            </thead>
+          </table>
         </v-col>
         <v-col cols="10" class="fill-width">
-          
+          <table>
+            <thead>
+              <tr>
+                <th v-for="n of 31" :key="n" class="mainwidth">{{n}}</th>
+              </tr>
+            </thead>
+          </table>
         </v-col>
       </v-row>
     </v-card>
@@ -43,7 +55,15 @@
 
 <style>
 .fill-width {
-  overflow-x: auto;
+  overflow-x: scroll;
   flex-wrap: nowrap;
+}
+
+.fill-width::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
+}
+
+.mainwidth {
+  min-width: 90px;
 }
 </style>
