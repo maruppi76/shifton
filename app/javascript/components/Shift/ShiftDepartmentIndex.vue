@@ -25,7 +25,7 @@
           <table>
             <thead>
               <tr>
-                <th v-for="n of 31" :key="n" class="mainwidth">{{n}}</th>
+                <th v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</th>
               </tr>
             </thead>
           </table>
