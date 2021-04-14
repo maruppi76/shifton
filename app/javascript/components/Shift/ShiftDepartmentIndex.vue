@@ -12,21 +12,21 @@
         </v-col>
       </v-row>
       <v-row class="ma-0" align="center">
-        <v-col cols="2">
+        <v-col cols="2" class="px-0">
           <table class="ShiftTable ShiftTable--User">
             <thead>
               <tr class="ShiftTableRow">
-                <th>スタッフ名</th>
+                <th class="pl-3">スタッフ名</th>
               </tr>
             </thead>
             <tbody>
               <tr class="ShiftTableRow" v-for="user of users" :key="user.id">
-                <td>{{ user.full_name }}</td>
+                <td class="pl-3">{{ user.full_name }}</td>
               </tr>
             </tbody>
           </table>
         </v-col>
-        <v-col cols="10" class="fill-width">
+        <v-col cols="10" class="fill-width px-0">
           <table  class="ShiftTable">
             <thead>
               <tr class="ShiftTableRow">
@@ -112,6 +112,7 @@
 .ShiftTable--User {
   width: 100%;
 }
+
 
 .ShiftTableRow {
   height: 56px;
