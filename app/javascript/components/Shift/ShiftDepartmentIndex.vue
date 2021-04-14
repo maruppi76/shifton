@@ -19,6 +19,11 @@
                 <th>スタッフ名</th>
               </tr>
             </thead>
+            <tbody>
+              <tr class="ShiftTableRow">
+                <td>テスト 太郎</td>
+              </tr>
+            </tbody>
           </table>
         </v-col>
         <v-col cols="10" class="fill-width">
@@ -28,6 +33,11 @@
                 <th v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</th>
               </tr>
             </thead>
+            <tbody>
+              <tr class="ShiftTableRow">
+                <td v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</td>
+              </tr>
+            </tbody>
           </table>
         </v-col>
       </v-row>
