@@ -20,8 +20,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="ShiftTableRow">
-                <td>テスト 太郎</td>
+              <tr class="ShiftTableRow" v-for="user of users" :key="user.id">
+                <td>{{ user.full_name }}</td>
               </tr>
             </tbody>
           </table>
@@ -34,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="ShiftTableRow">
+              <tr class="ShiftTableRow" v-for="user of users" :key="user.id">
                 <td v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</td>
               </tr>
             </tbody>
