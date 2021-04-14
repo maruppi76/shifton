@@ -15,7 +15,7 @@
         <v-col cols="2">
           <table>
             <thead>
-              <tr>
+              <tr class="ShiftTableRow">
                 <th>スタッフ名</th>
               </tr>
             </thead>
@@ -24,7 +24,7 @@
         <v-col cols="10" class="fill-width">
           <table>
             <thead>
-              <tr>
+              <tr class="ShiftTableRow">
                 <th v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</th>
               </tr>
             </thead>
@@ -82,5 +82,9 @@
 
 .mainwidth {
   min-width: 90px;
+}
+
+.ShiftTableRow {
+  height: 56px;
 }
 </style>
