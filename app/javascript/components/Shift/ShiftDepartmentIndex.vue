@@ -48,6 +48,19 @@
       }
     },
     mounted() {
+      let date = moment(this.day);
+      let num = moment(date).daysInMonth()
+      let dates = []
+      for(let i = 1; i < num + 1; i++){
+        let result = moment(date).date(i)
+        let text = result.format('DD(ddd)')
+        let value = result.format('YYYY-MM-DD')
+        let hash = {text: text, value: value}
+
+        dates.push(hash)
+      }
+      this.dates = dates
+      console.log(dates)
       axios.get('/api/users/user_detail.json')
         .then(response => {
           this.current_user = response.data
