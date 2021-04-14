@@ -55,6 +55,8 @@
       return {
         current_user: '',
         dates: [],
+        shifts: [],
+        users: [],
       }
     },
     mounted() {
