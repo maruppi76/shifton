@@ -44,6 +44,7 @@
     data() {
       return {
         current_user: '',
+        dates: [],
       }
     },
     mounted() {
