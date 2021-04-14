@@ -37,6 +37,7 @@
 
 <script>
   import moment from 'moment'
+  import holiday_jp from '@holiday-jp/holiday_jp';
   import axios from 'axios';
   export default {
     data() {
