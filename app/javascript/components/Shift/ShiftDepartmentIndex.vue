@@ -13,7 +13,7 @@
       </v-row>
       <v-row class="ma-0" align="center">
         <v-col cols="2">
-          <table>
+          <table class="ShiftTable ShiftTable--User">
             <thead>
               <tr class="ShiftTableRow">
                 <th>スタッフ名</th>
@@ -27,7 +27,7 @@
           </table>
         </v-col>
         <v-col cols="10" class="fill-width">
-          <table>
+          <table  class="ShiftTable">
             <thead>
               <tr class="ShiftTableRow">
                 <th v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</th>
@@ -109,7 +109,12 @@
   text-align: center;
 }
 
+.ShiftTable--User {
+  width: 100%;
+}
+
 .ShiftTableRow {
   height: 56px;
+  text-align: left;
 }
 </style>
