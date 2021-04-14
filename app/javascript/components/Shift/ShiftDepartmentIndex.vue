@@ -27,6 +27,9 @@
               <tr>
                 <th v-for="n of 31" :key="n" class="mainwidth">{{n}}</th>
               </tr>
+              <tr>
+                <th v-for="n of 31" :key="n" class="mainwidth">{{n}}</th>
+              </tr>
             </thead>
           </table>
         </v-col>
