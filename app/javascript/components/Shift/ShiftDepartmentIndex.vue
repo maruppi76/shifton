@@ -92,6 +92,7 @@
 
 .mainwidth {
   min-width: 90px;
+  text-align: center;
 }
 
 .ShiftTableRow {
