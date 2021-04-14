@@ -62,7 +62,7 @@
   flex-wrap: nowrap;
 }
 
-.fill-width::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+.fill-width::-webkit-scrollbar {
   display:none;
 }
 
