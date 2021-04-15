@@ -39,7 +39,7 @@
           <table  class="ShiftTable">
             <thead>
               <tr class="ShiftTableHeaderRow">
-                <th v-for="date of dates" :key="date.value" :class="date.tc" class="mainwidth">{{ date.text }}</th>
+                <th v-for="date of dates" :key="date.value" :class="date.tc" class="mainwidth grey--text text--darken-1">{{ date.text }}</th>
               </tr>
             </thead>
             <tbody>
