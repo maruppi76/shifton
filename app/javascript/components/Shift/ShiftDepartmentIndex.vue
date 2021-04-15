@@ -112,7 +112,27 @@
           console.log(this.shifts)
         })
         .catch(error => console.log(error))
-    }
+    },
+    methods: {
+      filterShiftName(uid, key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.user_id == uid && shift.date == key) {
+            filterd.push(shift.pattern.name);
+          }
+        });
+        return filterd
+      },
+      filterShiftType(uid, key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.user_id == uid && shift.date == key && shift.type) {
+            filterd.push(shift.type.name);
+          }
+        });
+        return filterd
+      },
+    },
   }
 </script>
 
