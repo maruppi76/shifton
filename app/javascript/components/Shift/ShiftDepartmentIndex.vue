@@ -100,13 +100,13 @@
           this.current_user = response.data
         })
         .catch(error => console.log(error))
-      axios.get('/api/users/all_users.json')
+      axios.get('/api/users/dep_users.json')
         .then(response => {
           this.users = response.data
           console.log(this.users)
         })
         .catch(error => console.log(error))
-      axios.get('/api/shifts/all_shifts.json')
+      axios.get('/api/shifts/dep_shifts.json')
         .then(response => {
           this.shifts = response.data
           console.log(this.shifts)
