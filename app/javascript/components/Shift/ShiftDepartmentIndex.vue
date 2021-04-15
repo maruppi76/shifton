@@ -44,7 +44,24 @@
             </thead>
             <tbody>
               <tr class="ShiftTableRow" v-for="user of users" :key="user.id">
-                <td v-for="date of dates" :key="date.value" :class="date.tc" class="mainwidth">{{ date.text }}</td>
+                <td v-for="date of dates" :key="date.value" :class="date.tc" class="mainwidth">
+                  <p
+                    class="text-caption text-center mb-0 mx-1"
+                    v-if="filterShiftName(user.id,date.value)[0] != '公休' && filterShiftType(user.id,date.value).length == 1"
+                  >{{filterShiftType(user.id,date.value)[0]}}</p>
+                  <p
+                    class="text-caption text-center mb-0 mx-1"
+                    v-if="filterShiftName(user.id,date.value).length == 0"
+                  ></p>
+                  <p
+                    class="text-caption text-center mb-0 mx-1"
+                    v-else-if="filterShiftName(user.id,date.value).length == 1"
+                  >{{ filterShiftName(user.id,date.value)[0] }}</p>
+                  <p
+                    class="text-caption text-center mb-0 mx-1"
+                    v-else-if="filterShiftName(user.id,date.value).length == 2"
+                  >◎</p>
+                </td>
               </tr>
             </tbody>
           </table>
