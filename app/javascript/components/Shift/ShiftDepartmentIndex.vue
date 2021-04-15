@@ -120,6 +120,7 @@
 
 .ShiftTable--User {
   width: 100%;
+  box-shadow: 3px 0 rgba(0,0,0,0.1);
 }
 
 
@@ -131,5 +132,16 @@
 .ShiftTableRow {
   height: 90px;
   text-align: left;
+}
+
+.ShiftTableHeaderRow > th,
+.ShiftTableRow > td {
+  border-bottom: 1px solid #dce2e6;
+  border-right: 1px solid #dce2e6;
+}
+
+.ShiftTableHeaderRow > th:last-child,
+.ShiftTableRow > td:last-child {
+  border-right: none;
 }
 </style>
