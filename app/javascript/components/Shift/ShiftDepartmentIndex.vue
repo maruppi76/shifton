@@ -39,12 +39,12 @@
           <table  class="ShiftTable">
             <thead>
               <tr class="ShiftTableHeaderRow">
-                <th v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</th>
+                <th v-for="date of dates" :key="date.value" :class="date.tc" class="mainwidth">{{ date.text }}</th>
               </tr>
             </thead>
             <tbody>
               <tr class="ShiftTableRow" v-for="user of users" :key="user.id">
-                <td v-for="date of dates" :key="date.value" class="mainwidth">{{ date.text }}</td>
+                <td v-for="date of dates" :key="date.value" :class="date.tc" class="mainwidth">{{ date.text }}</td>
               </tr>
             </tbody>
           </table>
@@ -75,9 +75,22 @@
       for(let i = 1; i < num + 1; i++){
         let result = moment(date).date(i)
         let text = result.format('DD(ddd)')
+        let textmiddle = result.format('ddd')
         let value = result.format('YYYY-MM-DD')
-        let hash = {text: text, value: value}
+        let holiday = holiday_jp.isHoliday(value)
+        let holiday_name = ''
+        let hash = ''
 
+        if (holiday){
+          holiday_name = holiday_jp.between(new Date(value), new Date(value))[0]['name']
+          hash = {text: text, value: value, tc: 'rl5', holiday: holiday, holiday_name: holiday_name}
+        } else if(textmiddle == '土'){
+          hash = {text: text, value: value, tc: 'bl5', holiday: holiday, holiday_name: holiday_name}
+        } else if(textmiddle == '日'){
+          hash = {text: text, value: value, tc: 'rl5', holiday: holiday, holiday_name: holiday_name}
+        } else {
+          hash = {text: text, value: value, holiday: holiday, holiday_name: holiday_name}
+        }
         dates.push(hash)
       }
       this.dates = dates
@@ -136,12 +149,20 @@
 
 .ShiftTableHeaderRow > th,
 .ShiftTableRow > td {
-  border-bottom: 1px solid #dce2e6;
-  border-right: 1px solid #dce2e6;
+  border-bottom: 1px solid #dce2e6 !important;
+  border-right: 1px solid #dce2e6 !important;
 }
 
 .ShiftTableHeaderRow > th:last-child,
 .ShiftTableRow > td:last-child {
   border-right: none;
+}
+
+.bl5 {
+  background-color: #e3f2fd;
+}
+
+.rl5 {
+  background-color: #ffebee;
 }
 </style>
