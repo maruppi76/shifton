@@ -21,7 +21,16 @@
             </thead>
             <tbody>
               <tr class="ShiftTableRow" v-for="user of users" :key="user.id">
-                <td class="pl-3">{{ user.full_name }}</td>
+                <td class="pl-3">
+                  <ruby>
+                    <rb>{{ user.first_name }}</rb>
+                    <rt>{{ user.first_name_kana }}</rt>
+                  </ruby>
+                  <ruby>
+                    <rb>{{ user.last_name }}</rb>
+                    <rt>{{ user.last_name_kana }}</rt>
+                  </ruby>
+                </td>
               </tr>
             </tbody>
           </table>
