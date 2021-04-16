@@ -51,11 +51,7 @@
                   >{{filterShiftType(user.id,date.value)[0]}}</p>
                   <p
                     class="text-center mb-0 mx-1"
-                    v-if="filterShiftName(user.id,date.value).length == 0"
-                  ></p>
-                  <p
-                    class="text-center mb-0 mx-1"
-                    v-else-if="filterShiftName(user.id,date.value).length == 1"
+                    v-if="filterShiftName(user.id,date.value).length == 1"
                   >{{ filterShiftName(user.id,date.value)[0] }}</p>
                   <p
                     class="text-center mb-0 mx-1"
