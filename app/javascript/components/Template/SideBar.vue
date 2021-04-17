@@ -141,12 +141,8 @@
                 link: '/shifts/me',
               },
               {
-                name: '所属部署シフト(新)',
+                name: '所属部署シフト',
                 link: '/shifts/department',
-              },
-              {
-                name: '所属部署シフト(旧)',
-                link: '/shifts/departmentold',
               },
               {
                 name: '全体シフト',
