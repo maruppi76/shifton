@@ -68,7 +68,9 @@
 </template>
 <script>
   import axios from 'axios';
-
+  import moment from 'moment'
+  moment.locale('ja')
+  
   export default {
     
   }
