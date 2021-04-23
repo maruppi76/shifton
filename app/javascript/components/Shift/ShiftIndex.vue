@@ -69,6 +69,7 @@
 <script>
   import axios from 'axios';
   import moment from 'moment'
+  import holiday_jp from '@holiday-jp/holiday_jp';
   moment.locale('ja')
   
   export default {
