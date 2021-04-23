@@ -72,6 +72,71 @@
   moment.locale('ja')
   
   export default {
-    
+    data() {
+      return {
+        dates: [],
+        shifts: [],
+        users: [],
+      }
+    },
+    mounted() {
+      let date = moment(this.day);
+      let num = moment(date).daysInMonth()
+      let dates = []
+      for(let i = 1; i < num + 1; i++){
+        let result = moment(date).date(i)
+        let text = result.format('DD(ddd)')
+        let textmiddle = result.format('ddd')
+        let value = result.format('YYYY-MM-DD')
+        let holiday = holiday_jp.isHoliday(value)
+        let holiday_name = ''
+        let hash = ''
+
+        if (holiday){
+          holiday_name = holiday_jp.between(new Date(value), new Date(value))[0]['name']
+          hash = {text: text, value: value, tc: 'rl5', holiday: holiday, holiday_name: holiday_name}
+        } else if(textmiddle == '土'){
+          hash = {text: text, value: value, tc: 'bl5', holiday: holiday, holiday_name: holiday_name}
+        } else if(textmiddle == '日'){
+          hash = {text: text, value: value, tc: 'rl5', holiday: holiday, holiday_name: holiday_name}
+        } else {
+          hash = {text: text, value: value, holiday: holiday, holiday_name: holiday_name}
+        }
+        dates.push(hash)
+      }
+      this.dates = dates
+      axios.get('/api/users/all_users.json')
+        .then(response => {
+          this.users = response.data
+          console.log(this.users)
+        })
+        .catch(error => console.log(error))
+      axios.get('/api/shifts/all_shifts.json')
+        .then(response => {
+          this.shifts = response.data
+          console.log(this.shifts)
+        })
+        .catch(error => console.log(error))
+    },
+    methods: {
+      filterShiftName(uid, key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.user_id == uid && shift.date == key) {
+            filterd.push(shift.pattern.name);
+          }
+        });
+        return filterd
+      },
+      filterShiftType(uid, key) {
+        let filterd = [];
+        this.shifts.forEach(shift => {
+          if (shift.user_id == uid && shift.date == key && shift.type) {
+            filterd.push(shift.type.name);
+          }
+        });
+        return filterd
+      },
+    },
   }
 </script>
