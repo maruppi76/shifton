@@ -17,5 +17,25 @@ RSpec.describe Shift, type: :model do
         expect(@shift).to be_valid
       end
     end
+
+    context '異常' do
+      it 'user:必須' do
+        @shift.user = nil
+        @shift.valid?
+        expect(@shift.errors.full_messages).to include("User must exist")
+      end
+
+      it 'pattern:必須' do
+        @shift.pattern = nil
+        @shift.valid?
+        expect(@shift.errors.full_messages).to include("Pattern must exist")
+      end
+
+      it 'pattern_typeが出勤日のとき、typeは必須' do
+        @shift.type = nil
+        @shift.valid?
+        expect(@shift.errors.full_messages).to include("Type can't be blank")
+      end
+    end
   end
 end
