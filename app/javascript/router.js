@@ -8,7 +8,6 @@ import AccountIndex from './components/Account/AccountIndex'
 import ShiftIndividualIndex from './components/Shift/ShiftIndividualIndex'
 import ShiftDepartmentIndex from './components/Shift/ShiftDepartmentIndex'
 import ShiftIndex from './components/Shift/ShiftIndex'
-import ShiftIndexOld from './components/Shift/ShiftIndexOld'
 import StaffIndex from './components/Staff/StaffIndex'
 import StaffDetail from './components/Staff/StaffDetail'
 import StaffManagementOld from './components/Staff/StaffManagementOld'
@@ -43,10 +42,6 @@ const router = new Router({
         {
           path: '/shifts/all',
           component: ShiftIndex
-        },
-        {
-          path: '/shifts/all/old',
-          component: ShiftIndexOld
         },
         {
           path: '/staff',
