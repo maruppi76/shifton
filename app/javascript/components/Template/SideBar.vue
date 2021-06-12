@@ -148,10 +148,6 @@
                 name: '全体シフト(新)',
                 link: '/shifts/all',
               },
-              {
-                name: '全体シフト(旧)',
-                link: '/shifts/all/old',
-              }
             ]
           },
         ],
