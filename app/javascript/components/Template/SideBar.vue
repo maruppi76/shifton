@@ -145,7 +145,7 @@
                 link: '/shifts/department',
               },
               {
-                name: '全体シフト(新)',
+                name: '全体シフト',
                 link: '/shifts/all',
               },
             ]
