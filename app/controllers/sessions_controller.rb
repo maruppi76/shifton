@@ -4,7 +4,7 @@ class SessionsController < Devise::SessionsController
   def create
     super do
       if request.format.json?
-        render :json => {
+        render json: {
           'status' => 'ok',
           'csrf_token' => form_authenticity_token,
           'result' => {
@@ -12,7 +12,7 @@ class SessionsController < Devise::SessionsController
               'id' => @user.id,
               'email' => @user.email,
               'first_name' => @user.first_name,
-              'last_name' => @user.last_name,
+              'last_name' => @user.last_name
             }
           }
         } and return
@@ -23,7 +23,7 @@ class SessionsController < Devise::SessionsController
   def destroy
     super do
       if request.format.json?
-        render :json => {
+        render json: {
           'csrf_param' => request_forgery_protection_token,
           'csrf_token' => form_authenticity_token
         }

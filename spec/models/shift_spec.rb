@@ -12,7 +12,7 @@ RSpec.describe Shift, type: :model do
       end
 
       it 'pattern_typeが出勤日以外のとき、typeは任意' do
-        @shift.pattern.pattern_type = "休日"
+        @shift.pattern.pattern_type = '休日'
         @shift.type = nil
         expect(@shift).to be_valid
       end
@@ -22,13 +22,13 @@ RSpec.describe Shift, type: :model do
       it 'user:必須' do
         @shift.user = nil
         @shift.valid?
-        expect(@shift.errors.full_messages).to include("User must exist")
+        expect(@shift.errors.full_messages).to include('User must exist')
       end
 
       it 'pattern:必須' do
         @shift.pattern = nil
         @shift.valid?
-        expect(@shift.errors.full_messages).to include("Pattern must exist")
+        expect(@shift.errors.full_messages).to include('Pattern must exist')
       end
 
       it 'pattern_typeが出勤日のとき、typeは必須' do

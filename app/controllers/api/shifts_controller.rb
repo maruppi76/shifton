@@ -1,18 +1,17 @@
 class Api::ShiftsController < ApplicationController
-
   def create
     @shift = Shift.new(shift_params)
     if @shift.save
-      unless !@shift.errors.messages.empty?
-        render :json => {
+      if @shift.errors.messages.empty?
+        render json: {
           'status' => 'ok',
-          'csrf_token' => form_authenticity_token,
+          'csrf_token' => form_authenticity_token
         } and return
       end
     else
-      render :json => {
+      render json: {
         'status' => 401,
-        'errors'=> @shift.errors
+        'errors' => @shift.errors
       } and return
     end
   end
@@ -20,16 +19,16 @@ class Api::ShiftsController < ApplicationController
   def update
     @shift = Shift.find(params[:id])
     if @shift.update(shift_params)
-      unless !@shift.errors.messages.empty?
-        render :json => {
+      if @shift.errors.messages.empty?
+        render json: {
           'status' => 'ok',
-          'csrf_token' => form_authenticity_token,
+          'csrf_token' => form_authenticity_token
         } and return
       end
     else
-      render :json => {
+      render json: {
         'status' => 401,
-        'errors'=> @shift.errors
+        'errors' => @shift.errors
       } and return
     end
   end
@@ -37,17 +36,17 @@ class Api::ShiftsController < ApplicationController
   def destroy
     @shift = Shift.find(params[:id])
     if @shift.destroy
-      unless !@shift.errors.messages.empty?
-        render :json => {
+      if @shift.errors.messages.empty?
+        render json: {
           'status' => 'ok',
-          'csrf_token' => form_authenticity_token,
+          'csrf_token' => form_authenticity_token
         } and return
       end
     else
-        render :json => {
-          'status' => 401,
-          'errors'=> @shift.errors
-        } and return
+      render json: {
+        'status' => 401,
+        'errors' => @shift.errors
+      } and return
     end
   end
 
@@ -68,6 +67,7 @@ class Api::ShiftsController < ApplicationController
   end
 
   private
+
   def shift_params
     params.require(:shift).permit(:date, :user_id, :pattern_id, :type_id)
   end
