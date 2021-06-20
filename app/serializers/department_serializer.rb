@@ -13,13 +13,11 @@ class DepartmentSerializer < ActiveModel::Serializer
         end
       end
     end
-    return str
+    str
   end
 
   def mobile
-    if object.id
-      mobile = Department.find(object.id)
-    end
-    return mobile.name
+    mobile = Department.find(object.id) if object.id
+    mobile.name
   end
 end

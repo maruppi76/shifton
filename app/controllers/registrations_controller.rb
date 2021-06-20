@@ -1,11 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
   respond_to :json
-  
+
   def create
     @user = build_resource(new_user_params)
     if @user.save
-      unless !@user.errors.messages.empty?
-        render :json => {
+      if @user.errors.messages.empty?
+        render json: {
           'status' => 'ok',
           'csrf_token' => form_authenticity_token,
           'result' => {
@@ -17,9 +17,9 @@ class RegistrationsController < Devise::RegistrationsController
         } and return
       end
     else
-      render :json => {
+      render json: {
         'status' => 401,
-        'errors'=>@user.errors
+        'errors' => @user.errors
       } and return
     end
   end
@@ -27,8 +27,8 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(params[:user][:id])
     if @user.update(new_user_params)
-      unless !@user.errors.messages.empty?
-        render :json => {
+      if @user.errors.messages.empty?
+        render json: {
           'status' => 'ok',
           'csrf_token' => form_authenticity_token,
           'result' => {
@@ -40,9 +40,9 @@ class RegistrationsController < Devise::RegistrationsController
         } and return
       end
     else
-      render :json => {
+      render json: {
         'status' => 401,
-        'errors'=>@user.errors
+        'errors' => @user.errors
       } and return
     end
   end
@@ -63,5 +63,5 @@ class RegistrationsController < Devise::RegistrationsController
                                  :role,
                                  :admin,
                                  :avatar)
-    end
+  end
 end
